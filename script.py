@@ -36,9 +36,6 @@ def update_poosl_model(belt, index, gantry, model_path):
     """
     Edits the xcps-model.poosl file, replacing the addXXX methods with the new
     'belt', 'index', and 'gantry' parameters.
-    
-    Example: if belt='slow', we replace any mention of addSlowBelts, addNormalBelts, or addFastBelts
-    with 'addSlowBelts', and so forth for index and gantry speeds.
     """
     with open(model_path, 'r') as file:
         data = file.readlines()
@@ -140,10 +137,9 @@ if __name__ == "__main__":
         makespan = run_performance_model(trace_ini_path, model_file)
         
         if makespan:
-            # For demonstration
-            # Price is chosen somewhat arbitrarily
-            price = 1.2 * (2239 + 1000)  # e.g., BOM=2239, fixed cost=1000 => mark up
-            # Demand function: volume = max(0, 1500 + 2*(6032.4 - price) + 50*(242 - makespan))
+            # Example price
+            price = 1.2 * (2239 + 1000)  # e.g., BOM=2239, plus 1000 fixed => markup
+            # Example demand function
             volume = max(0, 1500 + 2*(6032.4 - price) + 50*(242 - makespan))
             profit, loss = calculate_profit_and_loss(price, volume, 2239)
             results.append((belt, index, gantry, makespan, profit, loss))
@@ -161,16 +157,15 @@ if __name__ == "__main__":
     print(f"Results saved to {output_csv}")
 
     # Create a single column that describes the config more clearly
-    # e.g. "Belt=slow,Index=fast,Gantry=normal"
     df["Configuration"] = df.apply(
         lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}",
         axis=1
     )
 
     # ----------------------------------------------------------------------------
-    # PLOT 1: Makespan vs Profit (Scatter) with color showing the configuration
+    # PLOT: Makespan vs Profit (Scatter) with color showing the configuration
     # ----------------------------------------------------------------------------
-    fig1 = px.scatter(
+    fig = px.scatter(
         df,
         x="Makespan",
         y="Profit",
@@ -179,47 +174,13 @@ if __name__ == "__main__":
         title="Makespan vs Profit across Configurations",
         labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
     )
-    fig1.update_layout(
+    fig.update_layout(
         xaxis_title="Makespan (seconds)",
         yaxis_title="Profit (USD)",
         legend_title_text="Configuration",
     )
-    fig1.show()
-
-    # ----------------------------------------------------------------------------
-    # PLOT 2: Separate data “one arm” vs “two arms”
-    #
-    # IMPORTANT:
-    # The POOSL code always creates 2 Gantry arms (g1, g2). 
-    # This script demonstrates how you *could* separate them if you had a param for 
-    # "number_of_arms=1 or 2". Here, we will ARBITRARILY interpret "gantry=slow" as "one-arm" 
-    # and "gantry=normal/fast" as "two-arm" for demonstration purposes.
-    # ----------------------------------------------------------------------------
-    def label_arm_count(gantry_speed):
-        # Mock rule: slow => "One Arm", normal or fast => "Two Arms"
-        return "One Arm" if gantry_speed == "slow" else "Two Arms"
-
-    df["ArmCount"] = df["GantrySpeed"].apply(label_arm_count)
-
-    # We can produce a facet plot or side-by-side plots. Let’s do a facet:
-    fig2 = px.scatter(
-        df,
-        x="Makespan",
-        y="Profit",
-        color="Configuration",
-        size="Profit",
-        facet_col="ArmCount",     # Splits data by One Arm vs Two Arms
-        title="Makespan vs Profit (Separated by 'One Arm' vs 'Two Arms')",
-        labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
-    )
-    fig2.update_layout(
-        xaxis_title="Makespan (seconds)",
-        yaxis_title="Profit (USD)",
-        legend_title_text="Configuration",
-    )
-    fig2.show()
+    fig.show()
 
     print("\nNotes:")
     print("1) 'Failed to simulate' often means the model reached a deadlock or never printed a final Makespan.")
-    print("2) Profits are always positive in these runs because the chosen demand and cost parameters favor profit.")
-    print("   Adjust the BOM cost / price / demand equation if you need to see scenarios with negative profit.")
+    print("2) Profits can appear always positive under these parameters. Adjust BOM/price/demand if needed.")

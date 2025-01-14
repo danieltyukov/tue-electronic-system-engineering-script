@@ -1,0 +1,24 @@
+showClaims : true
+showEvents : true
+showClaimEvents : false
+showDependencies : true
+showSignals : true
+showSignalMarkers : false
+showClaimLabels : false
+activityView : true
+claimScaling : FULL
+claimGrouping : hid, name
+eventGrouping : hid, name
+claimColoring : pid
+eventColoring : pid
+dependencyColoring : 
+claimDescribing : 
+eventDescribing : 
+dependencyDescribing : 
+resourceDescribing : 
+signalDescribing : 
+claimFiltering : {}
+eventFiltering : {}
+dependencyFiltering : {}
+resourceFiltering : {}
+signalFiltering : {}
