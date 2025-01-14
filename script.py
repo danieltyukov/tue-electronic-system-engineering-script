@@ -1,22 +1,72 @@
 import subprocess
 import os
+import pandas as pd
+import plotly.express as px
 
-# Adjust the path to point to your local rotalumis executable
+# ----------------------------------------------------------------------------
+# USER-CONFIGURABLE PATHS
+# ----------------------------------------------------------------------------
 ROTALUMIS = os.path.expanduser("~/.p2/pool/plugins/nl.tue.rotalumis.executables_4.3.0.202310160813/linux/64bit/rotalumis")
+trace_ini_path = os.path.expanduser("~/eclipse-workspace/xcps/models/trace.ini")
+model_file = os.path.expanduser("~/eclipse-workspace/xcps/models/xcps-model.poosl")
+
+# Constants for parsing
 MAKESPAN_PREFIX = "Makespan : "
 
-# Parses the makespan from Rotalumis output
+# ----------------------------------------------------------------------------
+# FUNCTION: parse_makespan
+# ----------------------------------------------------------------------------
 def parse_makespan(output):
-    makespan = -1
+    """
+    Parses the Rotalumis console output for the 'Makespan : <value>' line,
+    returning that value as a float or None if not found.
+    """
     for line in output.split("\n"):
-        line = line.strip()
-        idx = line.find(MAKESPAN_PREFIX)
-        if idx >= 0:
-            makespan = float(line[idx + len(MAKESPAN_PREFIX):])
-    return makespan
+        if MAKESPAN_PREFIX in line:
+            try:
+                return float(line.split(MAKESPAN_PREFIX)[1].strip())
+            except ValueError:
+                return None
+    return None
 
-# Run the performance model using trace.ini and a POOSL model
+# ----------------------------------------------------------------------------
+# FUNCTION: update_poosl_model
+# ----------------------------------------------------------------------------
+def update_poosl_model(belt, index, gantry, model_path):
+    """
+    Edits the xcps-model.poosl file, replacing the addXXX methods with the new
+    'belt', 'index', and 'gantry' parameters.
+    
+    Example: if belt='slow', we replace any mention of addSlowBelts, addNormalBelts, or addFastBelts
+    with 'addSlowBelts', and so forth for index and gantry speeds.
+    """
+    with open(model_path, 'r') as file:
+        data = file.readlines()
+    
+    for i, line in enumerate(data):
+        # Belt
+        if "addSlowBelts" in line or "addNormalBelts" in line or "addFastBelts" in line:
+            data[i] = f"        add{belt.capitalize()}Belts\n"
+        # Index
+        if "addSlowIndex" in line or "addNormalIndex" in line or "addFastIndex" in line:
+            data[i] = f"        add{index.capitalize()}Index\n"
+        # Gantry
+        if "addSlowArm1" in line or "addNormalArm1" in line or "addFastArm1" in line:
+            data[i] = f"        add{gantry.capitalize()}Arm1\n"
+        if "addSlowArm2" in line or "addNormalArm2" in line or "addFastArm2" in line:
+            data[i] = f"        add{gantry.capitalize()}Arm2\n"
+    
+    with open(model_path, 'w') as file:
+        file.writelines(data)
+
+# ----------------------------------------------------------------------------
+# FUNCTION: run_performance_model
+# ----------------------------------------------------------------------------
 def run_performance_model(trace_ini, model):
+    """
+    Invokes Rotalumis on the given model and trace.ini configuration, returning
+    the parsed makespan or None if not found.
+    """
     try:
         proc = subprocess.run(
             [ROTALUMIS, "--stdlib", "-e", trace_ini, "--poosl", model],
@@ -26,22 +76,150 @@ def run_performance_model(trace_ini, model):
         if proc.returncode == 0:
             return parse_makespan(proc.stdout)
         else:
-            print(f"Error: {proc.stderr}")
-            return -1
+            print(f"Error running model {model}: {proc.stderr}")
+            return None
     except FileNotFoundError:
         print("Rotalumis executable not found. Please check the path.")
-        return -1
+        return None
 
+# ----------------------------------------------------------------------------
+# FUNCTION: calculate_profit_and_loss
+# ----------------------------------------------------------------------------
+def calculate_profit_and_loss(price, volume, bom_cost):
+    """
+    Returns (profit, loss).
+    For demonstration, 'loss' is forced to 0 if volume>0, otherwise cost if volume=0.
+    """
+    revenue = volume * price
+    total_cost = bom_cost + 1000  # Add a fixed cost (like an NRE).
+    profit = revenue - total_cost
+    loss = total_cost if volume == 0 else 0
+    return profit, loss
+
+# ----------------------------------------------------------------------------
+# MAIN SCRIPT
+# ----------------------------------------------------------------------------
 if __name__ == "__main__":
-    # Define paths to the trace.ini and POOSL model file
-    trace_ini_path = os.path.expanduser("~/eclipse-workspace/xcps/models/trace.ini")
-    model_path = os.path.expanduser("~/eclipse-workspace/xcps/models/xcps-model.poosl")
+    # All possible combinations
+    configurations = [
+        ("slow", "slow", "slow"),
+        ("slow", "slow", "normal"),
+        ("slow", "slow", "fast"),
+        ("slow", "normal", "slow"),
+        ("slow", "normal", "normal"),
+        ("slow", "normal", "fast"),
+        ("slow", "fast", "slow"),
+        ("slow", "fast", "normal"),
+        ("slow", "fast", "fast"),
+        ("normal", "slow", "slow"),
+        ("normal", "slow", "normal"),
+        ("normal", "slow", "fast"),
+        ("normal", "normal", "slow"),
+        ("normal", "normal", "normal"),
+        ("normal", "normal", "fast"),
+        ("normal", "fast", "slow"),
+        ("normal", "fast", "normal"),
+        ("normal", "fast", "fast"),
+        ("fast", "slow", "slow"),
+        ("fast", "slow", "normal"),
+        ("fast", "slow", "fast"),
+        ("fast", "normal", "slow"),
+        ("fast", "normal", "normal"),
+        ("fast", "normal", "fast"),
+        ("fast", "fast", "slow"),
+        ("fast", "fast", "normal"),
+        ("fast", "fast", "fast")
+    ]
 
-    # Run the performance model
-    makespan = run_performance_model(trace_ini_path, model_path)
+    results = []
 
-    # Print the results
-    if makespan >= 0:
-        print(f"Batch Makespan: {makespan}")
-    else:
-        print("Failed to run the performance model.")
+    # Run each configuration
+    for belt, index, gantry in configurations:
+        print(f"Testing configuration: Belt={belt}, Index={index}, Gantry={gantry}")
+        update_poosl_model(belt, index, gantry, model_file)
+        makespan = run_performance_model(trace_ini_path, model_file)
+        
+        if makespan:
+            # For demonstration
+            # Price is chosen somewhat arbitrarily
+            price = 1.2 * (2239 + 1000)  # e.g., BOM=2239, fixed cost=1000 => mark up
+            # Demand function: volume = max(0, 1500 + 2*(6032.4 - price) + 50*(242 - makespan))
+            volume = max(0, 1500 + 2*(6032.4 - price) + 50*(242 - makespan))
+            profit, loss = calculate_profit_and_loss(price, volume, 2239)
+            results.append((belt, index, gantry, makespan, profit, loss))
+            print(f"Configuration result: Makespan={makespan}, Profit={profit}, Loss={loss}")
+        else:
+            print(f"Failed to simulate configuration: Belt={belt}, Index={index}, Gantry={gantry}")
+
+    # Convert results to a DataFrame and save
+    df = pd.DataFrame(
+        results,
+        columns=["BeltSpeed", "IndexSpeed", "GantrySpeed", "Makespan", "Profit", "Loss"]
+    )
+    output_csv = "design_space_results.csv"
+    df.to_csv(output_csv, index=False)
+    print(f"Results saved to {output_csv}")
+
+    # Create a single column that describes the config more clearly
+    # e.g. "Belt=slow,Index=fast,Gantry=normal"
+    df["Configuration"] = df.apply(
+        lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}",
+        axis=1
+    )
+
+    # ----------------------------------------------------------------------------
+    # PLOT 1: Makespan vs Profit (Scatter) with color showing the configuration
+    # ----------------------------------------------------------------------------
+    fig1 = px.scatter(
+        df,
+        x="Makespan",
+        y="Profit",
+        color="Configuration",
+        size="Profit",
+        title="Makespan vs Profit across Configurations",
+        labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
+    )
+    fig1.update_layout(
+        xaxis_title="Makespan (seconds)",
+        yaxis_title="Profit (USD)",
+        legend_title_text="Configuration",
+    )
+    fig1.show()
+
+    # ----------------------------------------------------------------------------
+    # PLOT 2: Separate data “one arm” vs “two arms”
+    #
+    # IMPORTANT:
+    # The POOSL code always creates 2 Gantry arms (g1, g2). 
+    # This script demonstrates how you *could* separate them if you had a param for 
+    # "number_of_arms=1 or 2". Here, we will ARBITRARILY interpret "gantry=slow" as "one-arm" 
+    # and "gantry=normal/fast" as "two-arm" for demonstration purposes.
+    # ----------------------------------------------------------------------------
+    def label_arm_count(gantry_speed):
+        # Mock rule: slow => "One Arm", normal or fast => "Two Arms"
+        return "One Arm" if gantry_speed == "slow" else "Two Arms"
+
+    df["ArmCount"] = df["GantrySpeed"].apply(label_arm_count)
+
+    # We can produce a facet plot or side-by-side plots. Let’s do a facet:
+    fig2 = px.scatter(
+        df,
+        x="Makespan",
+        y="Profit",
+        color="Configuration",
+        size="Profit",
+        facet_col="ArmCount",     # Splits data by One Arm vs Two Arms
+        title="Makespan vs Profit (Separated by 'One Arm' vs 'Two Arms')",
+        labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
+    )
+    fig2.update_layout(
+        xaxis_title="Makespan (seconds)",
+        yaxis_title="Profit (USD)",
+        legend_title_text="Configuration",
+    )
+    fig2.show()
+
+    print("\nNotes:")
+    print("1) 'Failed to simulate' often means the model reached a deadlock or never printed a final Makespan.")
+    print("2) Profits are always positive in these runs because the chosen demand and cost parameters favor profit.")
+    print("   Adjust the BOM cost / price / demand equation if you need to see scenarios with negative profit.")

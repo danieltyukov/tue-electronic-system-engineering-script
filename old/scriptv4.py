@@ -52,7 +52,7 @@ def calculate_profit(bom_cost, makespan):
     price = 1.2 * (bom_cost + PRODUCTION_COST)
     volume = max(0, 1500 + 2 * (DEFAULT_PRICE - price) + 50 * (DEFAULT_MAKESPAN - makespan))
     revenue = price * volume
-    print(price, volume, revenue, bom_cost, revenue - (bom_cost * volume))
+    print("price: ", price, "volume: ", volume, "revenue: ", revenue, "bom_cost: ", bom_cost, "profit: ", revenue - (bom_cost * volume))
     return revenue - (bom_cost * volume)
 
 # Update model file for a specific configuration
