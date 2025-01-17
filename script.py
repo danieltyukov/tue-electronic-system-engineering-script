@@ -3,24 +3,14 @@ import os
 import pandas as pd
 import plotly.express as px
 
-# ----------------------------------------------------------------------------
-# USER-CONFIGURABLE PATHS
-# ----------------------------------------------------------------------------
 ROTALUMIS = os.path.expanduser("~/.p2/pool/plugins/nl.tue.rotalumis.executables_4.3.0.202310160813/linux/64bit/rotalumis")
 trace_ini_path = os.path.expanduser("~/eclipse-workspace/xcps/models/trace.ini")
 model_file = os.path.expanduser("~/eclipse-workspace/xcps/models/xcps-model.poosl")
 
-# Constants for parsing
 MAKESPAN_PREFIX = "Makespan : "
 
-# ----------------------------------------------------------------------------
-# FUNCTION: parse_makespan
-# ----------------------------------------------------------------------------
+
 def parse_makespan(output):
-    """
-    Parses the Rotalumis console output for the 'Makespan : <value>' line,
-    returning that value as a float or None if not found.
-    """
     for line in output.split("\n"):
         if MAKESPAN_PREFIX in line:
             try:
@@ -29,75 +19,64 @@ def parse_makespan(output):
                 return None
     return None
 
-# ----------------------------------------------------------------------------
-# FUNCTION: update_poosl_model
-# ----------------------------------------------------------------------------
+
 def update_poosl_model(belt, index, gantry, model_path):
-    """
-    Edits the xcps-model.poosl file, replacing the addXXX methods with the new
-    'belt', 'index', and 'gantry' parameters.
-    """
     with open(model_path, 'r') as file:
         data = file.readlines()
-    
+
     for i, line in enumerate(data):
-        # Belt
         if "addSlowBelts" in line or "addNormalBelts" in line or "addFastBelts" in line:
             data[i] = f"        add{belt.capitalize()}Belts\n"
-        # Index
         if "addSlowIndex" in line or "addNormalIndex" in line or "addFastIndex" in line:
             data[i] = f"        add{index.capitalize()}Index\n"
-        # Gantry
         if "addSlowArm1" in line or "addNormalArm1" in line or "addFastArm1" in line:
             data[i] = f"        add{gantry.capitalize()}Arm1\n"
         if "addSlowArm2" in line or "addNormalArm2" in line or "addFastArm2" in line:
             data[i] = f"        add{gantry.capitalize()}Arm2\n"
-    
+
     with open(model_path, 'w') as file:
         file.writelines(data)
 
-# ----------------------------------------------------------------------------
-# FUNCTION: run_performance_model
-# ----------------------------------------------------------------------------
+
 def run_performance_model(trace_ini, model):
-    """
-    Invokes Rotalumis on the given model and trace.ini configuration, returning
-    the parsed makespan or None if not found.
-    """
     try:
         proc = subprocess.run(
             [ROTALUMIS, "--stdlib", "-e", trace_ini, "--poosl", model],
             capture_output=True,
             text=True
         )
-        if proc.returncode == 0:
-            return parse_makespan(proc.stdout)
-        else:
-            print(f"Error running model {model}: {proc.stderr}")
-            return None
+        return parse_makespan(proc.stdout) if proc.returncode == 0 else None
     except FileNotFoundError:
-        print("Rotalumis executable not found. Please check the path.")
         return None
 
-# ----------------------------------------------------------------------------
-# FUNCTION: calculate_profit_and_loss
-# ----------------------------------------------------------------------------
-def calculate_profit_and_loss(price, volume, bom_cost):
-    """
-    Returns (profit, loss).
-    For demonstration, 'loss' is forced to 0 if volume>0, otherwise cost if volume=0.
-    """
-    revenue = volume * price
-    total_cost = bom_cost + 1000  # Add a fixed cost (like an NRE).
-    profit = revenue - total_cost
-    loss = total_cost if volume == 0 else 0
-    return profit, loss
 
-# ----------------------------------------------------------------------------
-# MAIN SCRIPT
-# ----------------------------------------------------------------------------
+def calculate_profit(makespan, belt, index, gantry, adjustments):
+    make0, window, price0 = 242, 913, 6032.4
+    default_belt, default_index, default_gantry = 's', 'f', 'n'
+
+    changes = sum([belt != default_belt, index != default_index, gantry != default_gantry])
+    delay = adjustments * 28 + changes * 56
+
+    cost_map = {
+        'belt': {'s': 510, 'n': 1029, 'f': 1744},
+        'index': {'s': 133, 'n': 634, 'f': 919},
+        'gantry': {'s': 798, 'n': 1299, 'f': 1529}
+    }
+
+    bom_cost = (cost_map['belt'][belt] + cost_map['index'][index] + 2 * cost_map['gantry'][gantry])
+    price = 1.2 * (bom_cost + 1000)
+    volume = max(0, 1500 + 2 * (price0 - price) + 50 * (make0 - makespan))
+
+    if volume > 0:
+        volume *= 1 - ((3 * window - delay) * delay / (2 * window ** 2))
+
+    cost = bom_cost * volume + 72000 * adjustments + 108000 * changes
+    profit = price * volume - cost
+
+    return profit
+
+
 if __name__ == "__main__":
-    # All possible combinations
     configurations = [
         ("slow", "slow", "slow"),
         ("slow", "slow", "normal"),
@@ -130,57 +109,20 @@ if __name__ == "__main__":
 
     results = []
 
-    # Run each configuration
     for belt, index, gantry in configurations:
-        print(f"Testing configuration: Belt={belt}, Index={index}, Gantry={gantry}")
         update_poosl_model(belt, index, gantry, model_file)
         makespan = run_performance_model(trace_ini_path, model_file)
-        
+
         if makespan:
-            # Example price
-            price = 1.2 * (2239 + 1000)  # e.g., BOM=2239, plus 1000 fixed => markup
-            # Example demand function
-            volume = max(0, 1500 + 2*(6032.4 - price) + 50*(242 - makespan))
-            profit, loss = calculate_profit_and_loss(price, volume, 2239)
-            results.append((belt, index, gantry, makespan, profit, loss))
-            print(f"Configuration result: Makespan={makespan}, Profit={profit}, Loss={loss}")
-        else:
-            print(f"Failed to simulate configuration: Belt={belt}, Index={index}, Gantry={gantry}")
+            profit = calculate_profit(makespan, belt[0], index[0], gantry[0], adjustments=0)
+            results.append((belt, index, gantry, makespan, profit))
 
-    # Convert results to a DataFrame and save
-    df = pd.DataFrame(
-        results,
-        columns=["BeltSpeed", "IndexSpeed", "GantrySpeed", "Makespan", "Profit", "Loss"]
-    )
-    output_csv = "design_space_results.csv"
-    df.to_csv(output_csv, index=False)
-    print(f"Results saved to {output_csv}")
+    df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed", "Makespan", "Profit"])
+    df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}", axis=1)
+    df.to_csv("design_space_results.csv", index=False)
 
-    # Create a single column that describes the config more clearly
-    df["Configuration"] = df.apply(
-        lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}",
-        axis=1
-    )
-
-    # ----------------------------------------------------------------------------
-    # PLOT: Makespan vs Profit (Scatter) with color showing the configuration
-    # ----------------------------------------------------------------------------
     fig = px.scatter(
-        df,
-        x="Makespan",
-        y="Profit",
-        color="Configuration",
-        size="Profit",
-        title="Makespan vs Profit across Configurations",
+        df, x="Makespan", y="Profit", color="Configuration", title="Makespan vs Profit",
         labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
     )
-    fig.update_layout(
-        xaxis_title="Makespan (seconds)",
-        yaxis_title="Profit (USD)",
-        legend_title_text="Configuration",
-    )
     fig.show()
-
-    print("\nNotes:")
-    print("1) 'Failed to simulate' often means the model reached a deadlock or never printed a final Makespan.")
-    print("2) Profits can appear always positive under these parameters. Adjust BOM/price/demand if needed.")

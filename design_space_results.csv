@@ -1,22 +1,22 @@
-BeltSpeed,IndexSpeed,GantrySpeed,Makespan,Profit,Loss
-slow,slow,slow,332.79,4861868.559999996,0
-slow,normal,slow,242.781142857143,22354189.857142825,0
-slow,normal,normal,218.047142857143,27160995.417142827,0
-slow,normal,fast,215.2025,27713823.310000002,0
-slow,fast,slow,244.535285714286,22013289.734285656,0
-slow,fast,normal,190.583428571429,32498293.651428483,0
-slow,fast,fast,176.6705,35202132.19,0
-normal,slow,slow,317.09,7913006.560000004,0
-normal,normal,slow,234.797714285714,23905689.36571434,0
-normal,normal,normal,203.047142857143,30076095.417142827,0
-normal,normal,fast,200.2025,30628923.310000002,0
-normal,fast,slow,223.072428571429,26184381.39142849,0
-normal,fast,normal,171.634428571429,36180842.31142849,0
-normal,fast,fast,160.5425,38336447.71,0
-fast,slow,slow,310.46,9201480.760000002,0
-fast,normal,slow,225.954380952381,25624302.765714273,0
-fast,normal,normal,198.014285714286,31054180.874285657,0
-fast,normal,fast,195.8375,31477217.409999993,0
-fast,fast,slow,221.115619047619,26564667.754285723,0
-fast,fast,normal,170.384952380952,36423665.51428579,0
-fast,fast,fast,157.998202380953,38830906.50928559,0
+BeltSpeed,IndexSpeed,GantrySpeed,Makespan,Profit,Configuration
+slow,slow,slow,328.93,1744441.8018107917,"Belt=slow, Index=slow, Gantry=slow"
+slow,normal,slow,236.062571428571,6816948.992850428,"Belt=slow, Index=normal, Gantry=slow"
+slow,normal,normal,214.734285714286,6180641.369439783,"Belt=slow, Index=normal, Gantry=normal"
+slow,normal,fast,212.5575,4072338.307594752,"Belt=slow, Index=normal, Gantry=fast"
+slow,fast,slow,234.165285714286,6948318.413745783,"Belt=slow, Index=fast, Gantry=slow"
+slow,fast,normal,183.410428571429,8882876.327142812,"Belt=slow, Index=fast, Gantry=normal"
+slow,fast,fast,172.3325,7295303.674021734,"Belt=slow, Index=fast, Gantry=fast"
+normal,slow,slow,313.93,907731.8120920998,"Belt=normal, Index=slow, Gantry=slow"
+normal,normal,slow,225.185142857143,5416491.4237207435,"Belt=normal, Index=normal, Gantry=slow"
+normal,normal,normal,199.734285714286,4941405.402559627,"Belt=normal, Index=normal, Gantry=normal"
+normal,normal,fast,197.5575,2943145.9314496163,"Belt=normal, Index=normal, Gantry=fast"
+normal,fast,slow,218.715428571429,5794148.329567062,"Belt=normal, Index=fast, Gantry=slow"
+normal,fast,normal,164.314428571429,7834587.329616081,"Belt=normal, Index=fast, Gantry=normal"
+normal,fast,fast,156.0865,6030777.138512263,"Belt=normal, Index=fast, Gantry=fast"
+fast,slow,slow,308.93,-324000.0,"Belt=fast, Index=slow, Gantry=slow"
+fast,normal,slow,217.289428571429,3907056.0664103404,"Belt=fast, Index=normal, Gantry=slow"
+fast,normal,normal,194.734285714286,2650572.8981487304,"Belt=fast, Index=normal, Gantry=normal"
+fast,normal,fast,192.5575,676717.9246971752,"Belt=fast, Index=normal, Gantry=fast"
+fast,fast,slow,212.371,3880904.732169248,"Belt=fast, Index=fast, Gantry=slow"
+fast,fast,normal,161.573428571429,5137457.923871351,"Belt=fast, Index=fast, Gantry=normal"
+fast,fast,fast,151.642964285714,3552792.9019813705,"Belt=fast, Index=fast, Gantry=fast"
