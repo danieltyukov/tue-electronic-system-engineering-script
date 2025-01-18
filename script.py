@@ -116,6 +116,7 @@ if __name__ == "__main__":
         if makespan:
             profit = calculate_profit(makespan, belt[0], index[0], gantry[0], adjustments=0)
             results.append((belt, index, gantry, makespan, profit))
+            print(f"Configuration: Belt={belt}, Index={index}, Gantry={gantry} | Makespan: {makespan:.2f}, Profit: {profit:.2f}")
 
     df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed", "Makespan", "Profit"])
     df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}", axis=1)
