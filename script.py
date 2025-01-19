@@ -123,7 +123,7 @@ if __name__ == "__main__":
     df.to_csv("design_space_results.csv", index=False)
 
     fig = px.scatter(
-        df, x="Makespan", y="Profit", color="Configuration", title="Makespan vs Profit",
+        df, x="Makespan", y="Profit", color="Configuration", size=[10] * len(df), title="Makespan vs Profit",
         labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
     )
     fig.show()
