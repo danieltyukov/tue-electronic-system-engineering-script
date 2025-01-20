@@ -25,681 +25,823 @@ R 16 1 false; name=IndexTable_2
 R 17 1 false; name=Stopper_3
 C 0 0 0.03 2 1; name=Enable,pid=-1,resource=Stopper_4
 C 1 0 0.28 10 1; name=Enable,pid=-1
-C 2 0 3 16 1; name=AlignBelt,pid=-1
-C 3 3 7.8 15 1; name=MoveAboveTop,pid=1
-C 4 7.8 9.2 15 1; name=MoveAtTop,pid=1
-C 5 9.2 9.4 15 1; name=Grab,pid=1
-C 6 9.4 10.8 15 1; name=MoveAboveTop,pid=1
-C 7 10.8 12.8 15 1; name=MoveBeforeBelt1,pid=1
-C 8 12.8 13.92 15 1; name=MoveAtBelt1,pid=1
-C 9 13.92 14.12 15 1; name=Ungrab,pid=1
-C 10 14.12 15.24 15 1; name=MoveBeforeBelt1,pid=1
-C 11 15.24 16.74 15 1; name=MoveAboveBottom,pid=1
-C 12 14.12 17.52 0 0.25; name=Transport,pid=1,type=top,traj=tr_ungrab_s5,frag=1
-C 13 17.52 17.6 9 0.25; name=Transport,pid=1,type=top,traj=tr_s5_w1,frag=1
-E 0 17.6; name=sensor_01,event=await,type=top
-C 14 17.6 17.9 9 0.25; name=Transport,pid=1,type=top,traj=tr_w1_s1,frag=1
-C 15 16.74 18.14 15 1; name=MoveAtBottom,pid=1
-C 16 17.9 18.25 9 0.25; name=Transport,pid=1,type=top,traj=tr_s1_w2,frag=1
-E 1 18.25; name=sensor_02,event=await,type=top
-C 17 18.25 18.28 7 1; name=Enable,pid=1,resource=Stopper_1
-C 18 18.25 18.28 13 1; name=Enable,pid=1,resource=Stopper_2
-C 19 18.25 18.33 9 0.25; name=Transport,pid=1,type=top,traj=tr_w2_s2,frag=1
-C 20 18.14 18.34 15 1; name=Grab,pid=1
-C 21 18.25 18.75 12 1; name=Down,pid=1
-C 22 18.75 18.8 12 1; name=Grab,pid=1
-C 23 18.8 19.3 12 1; name=Up,pid=1
-C 24 19.3 19.65 12 1; name=Flip_left,pid=1
-C 25 18.34 19.74 15 1; name=MoveAboveBottom,pid=1
-C 26 19.65 20.15 12 1; name=Down,pid=1
-C 27 20.15 20.19 12 1; name=Ungrab,pid=1
-C 28 20.19 20.69 12 1; name=Up,pid=1
-C 29 20.69 21.04 12 1; name=Flip_right,pid=1
-C 30 21.04 21.07 13 1; name=Disable,pid=1,resource=Stopper_2
-C 31 21.04 21.07 7 1; name=Disable,pid=1,resource=Stopper_1
-C 32 19.74 21.24 15 1; name=MoveBeforeBelt1,pid=1
-C 33 21.24 22.36 15 1; name=MoveAtBelt1,pid=1
-C 34 22.36 22.56 15 1; name=Ungrab,pid=1
-C 35 22.56 23.68 15 1; name=MoveBeforeBelt1,pid=2
-C 36 21.07 23.69 9 0.25; name=Transport,pid=1,type=top,traj=tr_s2_w4,frag=1
-E 2 23.69; name=sensor_04,event=await,type=top
-C 37 23.69 23.74 9 0.25; name=Transport,pid=1,type=top,traj=tr_w4_s3,frag=1
-C 38 23.74 24.74 9 0.25; name=Transport,pid=1,type=top,traj=tr_s3_p5,frag=1
-E 3 24.74; name=sensor_05,event=pass,type=top
-C 39 24.74 24.77 2 1; name=Enable,pid=1,resource=Stopper_4
-C 40 23.68 25.68 15 1; name=MoveAboveTop,pid=2
-C 41 22.56 25.96 0 0.25; name=Transport,pid=1,type=bottom,traj=tr_ungrab_s5,frag=1
-C 42 25.96 26.04 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s5_w1,frag=1
-E 4 26.04; name=sensor_01,event=await,type=bottom
-C 43 26.04 26.34 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w1_s1,frag=1
-C 44 26.34 26.69 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s1_w2,frag=1
-E 5 26.69; name=sensor_02,event=await,type=bottom
-C 45 24.74 26.74 9 0.25; name=Transport,pid=1,type=top,traj=tr_p5_b3,frag=1
-C 46 26.69 26.77 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w2_s2,frag=1
-C 47 25.68 27.08 15 1; name=MoveAtTop,pid=2
-C 48 27.08 27.28 15 1; name=Grab,pid=2
-C 49 27.28 28.68 15 1; name=MoveAboveTop,pid=2
-C 50 26.74 28.71 5 0.25; name=Transport,pid=1,type=top,traj=tr_b3_s4,frag=1
-E 6 28.71; name=sensor_08,event=await,type=top
-C 51 26.77 29.39 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s2_w4,frag=1
-E 7 29.39; name=sensor_04,event=await,type=bottom
-C 52 29.39 29.44 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w4_s3,frag=1
-C 53 29.44 30.44 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s3_p5,frag=1
-E 8 30.44; name=sensor_05,event=pass,type=bottom
-C 54 30.44 30.47 17 1; name=Enable,pid=1,resource=Stopper_3
-C 55 28.68 30.68 15 1; name=MoveBeforeBelt1,pid=2
-C 56 30.44 31.23 8 1; name=Enable,pid=1
-C 57 30.68 31.8 15 1; name=MoveAtBelt1,pid=2
-C 58 31.8 32 15 1; name=Ungrab,pid=2
-C 59 31.23 32.02 8 1; name=Disable,pid=1
-C 60 32 33.12 15 1; name=MoveBeforeBelt1,pid=2
-C 61 33.12 34.62 15 1; name=MoveAboveBottom,pid=2
-C 62 32.02 35.02 16 1; name=AlignPandP,pid=1
-C 63 32 35.4 0 0.25; name=Transport,pid=2,type=top,traj=tr_ungrab_s5,frag=1
-C 64 35.4 35.48 9 0.25; name=Transport,pid=2,type=top,traj=tr_s5_w1,frag=1
-E 9 35.48; name=sensor_01,event=await,type=top
-C 65 35.48 35.78 9 0.25; name=Transport,pid=2,type=top,traj=tr_w1_s1,frag=1
-C 66 34.62 36.02 15 1; name=MoveAtBottom,pid=2
-C 67 35.78 36.13 9 0.25; name=Transport,pid=2,type=top,traj=tr_s1_w2,frag=1
-E 10 36.13; name=sensor_02,event=await,type=top
-C 68 36.13 36.16 7 1; name=Enable,pid=2,resource=Stopper_1
-C 69 36.13 36.16 13 1; name=Enable,pid=2,resource=Stopper_2
-C 70 36.13 36.21 9 0.25; name=Transport,pid=2,type=top,traj=tr_w2_s2,frag=1
-C 71 36.02 36.22 15 1; name=Grab,pid=2
-C 72 36.13 36.63 12 1; name=Down,pid=2
-C 73 36.63 36.68 12 1; name=Grab,pid=2
-C 74 36.68 37.18 12 1; name=Up,pid=2
-C 75 37.18 37.53 12 1; name=Flip_left,pid=2
-C 76 36.22 37.62 15 1; name=MoveAboveBottom,pid=2
-C 77 35.02 38.02 16 1; name=AlignBelt,pid=1
-C 78 37.53 38.03 12 1; name=Down,pid=2
-C 79 38.03 38.07 12 1; name=Ungrab,pid=2
-C 80 38.07 38.57 12 1; name=Up,pid=2
-C 81 38.57 38.92 12 1; name=Flip_right,pid=2
-C 82 38.92 38.95 7 1; name=Disable,pid=2,resource=Stopper_1
-C 83 38.92 38.95 13 1; name=Disable,pid=2,resource=Stopper_2
-C 84 37.62 39.12 15 1; name=MoveBeforeBelt1,pid=2
-C 85 39.12 40.24 15 1; name=MoveAtBelt1,pid=2
-C 86 40.24 40.44 15 1; name=Ungrab,pid=2
-C 87 38.02 41.02 16 1; name=AlignPandP,pid=1
-C 88 41.02 41.05 17 1; name=Disable,pid=1,resource=Stopper_3
-C 89 40.44 41.56 15 1; name=MoveBeforeBelt1,pid=3
-C 90 38.95 41.57 9 0.25; name=Transport,pid=2,type=top,traj=tr_s2_w4,frag=1
-E 11 41.57; name=sensor_04,event=await,type=top
-C 91 41.57 41.62 9 0.25; name=Transport,pid=2,type=top,traj=tr_w4_s3,frag=1
-C 92 41.62 42.62 9 0.25; name=Transport,pid=2,type=top,traj=tr_s3_p5,frag=1
-E 12 42.62; name=sensor_05,event=pass,type=top
-C 93 42.62 42.65 2 1; name=Enable,pid=2,resource=Stopper_4
-C 94 41.56 43.56 15 1; name=MoveAboveTop,pid=3
-C 95 40.44 43.84 0 0.25; name=Transport,pid=2,type=bottom,traj=tr_ungrab_s5,frag=1
-C 96 43.84 43.92 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s5_w1,frag=1
-E 13 43.92; name=sensor_01,event=await,type=bottom
-C 97 43.92 44.22 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w1_s1,frag=1
-C 98 44.22 44.57 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s1_w2,frag=1
-E 14 44.57; name=sensor_02,event=await,type=bottom
-C 99 42.62 44.62 9 0.25; name=Transport,pid=2,type=top,traj=tr_p5_b3,frag=1
-C 100 44.57 44.65 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w2_s2,frag=1
-C 101 43.56 44.96 15 1; name=MoveAtTop,pid=3
-C 102 44.96 45.16 15 1; name=Grab,pid=3
-C 103 45.16 46.56 15 1; name=MoveAboveTop,pid=3
-C 104 44.62 46.59 5 0.25; name=Transport,pid=2,type=top,traj=tr_b3_s4,frag=1
-E 15 46.59; name=sensor_08,event=await,type=top
-C 105 44.65 47.27 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s2_w4,frag=1
-E 16 47.27; name=sensor_04,event=await,type=bottom
-C 106 47.27 47.32 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w4_s3,frag=1
-C 107 41.02 47.937 11 1; name=Assemble,pid=1
-C 108 47.32 48.32 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s3_p5,frag=1
-E 17 48.32; name=sensor_05,event=pass,type=bottom
-C 109 48.32 48.35 17 1; name=Enable,pid=2,resource=Stopper_3
-C 110 46.56 48.56 15 1; name=MoveBeforeBelt1,pid=3
-C 111 48.56 49.68 15 1; name=MoveAtBelt1,pid=3
-C 112 49.68 49.88 15 1; name=Ungrab,pid=3
-C 113 47.937 50.937 16 1; name=AlignBelt,pid=1
-C 114 49.88 51 15 1; name=MoveBeforeBelt1,pid=3
-C 115 51 52.5029 15 1; name=MoveAboveBottom,pid=3
-C 116 49.88 53.28 0 0.25; name=Transport,pid=3,type=top,traj=tr_ungrab_s5,frag=1
-C 117 53.28 53.36 9 0.25; name=Transport,pid=3,type=top,traj=tr_s5_w1,frag=1
-E 18 53.36; name=sensor_01,event=await,type=top
-C 118 53.36 53.66 9 0.25; name=Transport,pid=3,type=top,traj=tr_w1_s1,frag=1
-C 119 52.5029 53.9029 15 1; name=MoveAtBottom,pid=3
-C 120 50.937 53.937 16 1; name=AlignPandP,pid=1
-C 121 53.66 54.01 9 0.25; name=Transport,pid=3,type=top,traj=tr_s1_w2,frag=1
-E 19 54.01; name=sensor_02,event=await,type=top
-C 122 54.01 54.04 7 1; name=Enable,pid=3,resource=Stopper_1
-C 123 54.01 54.04 13 1; name=Enable,pid=3,resource=Stopper_2
-C 124 54.01 54.09 9 0.25; name=Transport,pid=3,type=top,traj=tr_w2_s2,frag=1
-C 125 53.9029 54.1029 15 1; name=Grab,pid=3
-C 126 54.01 54.51 12 1; name=Down,pid=3
-C 127 54.51 54.56 12 1; name=Grab,pid=3
-C 128 54.56 55.06 12 1; name=Up,pid=3
-C 129 55.06 55.41 12 1; name=Flip_left,pid=3
-C 130 54.1029 55.5029 15 1; name=MoveAboveBottom,pid=3
-C 131 55.41 55.91 12 1; name=Down,pid=3
-C 132 55.91 55.95 12 1; name=Ungrab,pid=3
-C 133 55.95 56.45 12 1; name=Up,pid=3
-C 134 56.45 56.8 12 1; name=Flip_right,pid=3
-C 135 56.8 56.83 7 1; name=Disable,pid=3,resource=Stopper_1
-C 136 56.8 56.83 13 1; name=Disable,pid=3,resource=Stopper_2
-C 137 53.937 56.937 16 1; name=AlignBelt,pid=1
-C 138 55.5029 57.0057 15 1; name=MoveBeforeBelt1,pid=3
-C 139 56.937 57.217 10 1; name=Enable,pid=1
-C 140 57.217 57.307 10 1; name=Disable,pid=1
-C 141 57.307 58.097 8 1; name=Enable,pid=2
-C 142 57.0057 58.1257 15 1; name=MoveAtBelt1,pid=3
-C 143 58.1257 58.3257 15 1; name=Ungrab,pid=3
-C 144 58.097 58.887 8 1; name=Disable,pid=2
-C 145 58.3257 59.4457 15 1; name=MoveBeforeBelt1,pid=4
-C 146 56.83 59.45 9 0.25; name=Transport,pid=3,type=top,traj=tr_s2_w4,frag=1
-E 20 59.45; name=sensor_04,event=await,type=top
-C 147 59.45 59.5 9 0.25; name=Transport,pid=3,type=top,traj=tr_w4_s3,frag=1
-C 148 57.307 61.367 3 0.25; name=Transport,pid=1,type=product,traj=tr_sw3_b5,frag=1
-C 149 59.4457 61.4457 15 1; name=MoveAboveTop,pid=4
-C 150 58.3257 61.7257 0 0.25; name=Transport,pid=3,type=bottom,traj=tr_ungrab_s5,frag=1
-C 151 61.7257 61.8057 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s5_w1,frag=1
-E 21 61.8057; name=sensor_01,event=await,type=bottom
-C 152 58.887 61.887 16 1; name=AlignPandP,pid=2
-C 153 61.8057 62.1057 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w1_s1,frag=1
-C 154 62.1057 62.4557 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s1_w2,frag=1
-E 22 62.4557; name=sensor_02,event=await,type=bottom
-C 155 62.4557 62.5357 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w2_s2,frag=1
-C 156 61.4457 62.8457 15 1; name=MoveAtTop,pid=4
-C 157 62.8457 63.0457 15 1; name=Grab,pid=4
-C 158 61.367 64.427 4 0.25; name=Transport,pid=1,type=product,traj=tr_b5_p20,frag=1
-E 23 64.427; name=sensor_20,event=pass,type=product
-C 159 63.0457 64.4457 15 1; name=MoveAboveTop,pid=4
-C 160 64.427 64.627 6 1; name=Grab,pid=1
-C 161 61.887 64.887 16 1; name=AlignBelt,pid=2
-C 162 62.5357 65.1557 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s2_w4,frag=1
-E 24 65.1557; name=sensor_04,event=await,type=bottom
-C 163 65.1557 65.2057 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w4_s3,frag=1
-C 164 64.4457 66.4457 15 1; name=MoveBeforeBelt1,pid=4
-C 165 64.627 67.427 6 1; name=MoveBeforeBelt5,pid=1
-C 166 66.4457 67.5657 15 1; name=MoveAtBelt1,pid=4
-C 167 67.5657 67.7657 15 1; name=Ungrab,pid=4
-C 168 64.887 67.887 16 1; name=AlignPandP,pid=2
-C 169 67.887 67.917 17 1; name=Disable,pid=2,resource=Stopper_3
-C 170 67.427 68.7527 6 1; name=MoveAboveProduct,pid=1
-C 171 67.7657 68.8857 15 1; name=MoveBeforeBelt1,pid=4
-C 172 67.917 68.917 9 0.25; name=Transport,pid=3,type=top,traj=tr_s3_p5,frag=1
-C 173 67.917 68.917 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s3_p5,frag=1
-E 25 68.917; name=sensor_05,event=pass,type=top
-E 26 68.917; name=sensor_05,event=pass,type=bottom
-C 174 68.917 68.947 2 1; name=Enable,pid=3,resource=Stopper_4
-C 175 68.917 68.947 17 1; name=Enable,pid=3,resource=Stopper_3
-C 176 68.7527 70.1527 6 1; name=MoveAtProduct,pid=1
-C 177 70.1527 70.3527 6 1; name=Ungrab,pid=1
-C 178 68.917 70.917 9 0.25; name=Transport,pid=3,type=top,traj=tr_p5_b3,frag=1
-C 179 67.7657 71.1657 0 0.25; name=Transport,pid=4,type=top,traj=tr_ungrab_s5,frag=1
-C 180 71.1657 71.2457 9 0.25; name=Transport,pid=4,type=top,traj=tr_s5_w1,frag=1
-E 27 71.2457; name=sensor_01,event=await,type=top
-C 181 71.2457 71.5457 9 0.25; name=Transport,pid=4,type=top,traj=tr_w1_s1,frag=1
-C 182 70.3527 71.7527 6 1; name=MoveAboveProduct,pid=1
-C 183 71.5457 71.8957 9 0.25; name=Transport,pid=4,type=top,traj=tr_s1_w2,frag=1
-E 28 71.8957; name=sensor_02,event=await,type=top
-C 184 71.8957 71.9257 13 1; name=Enable,pid=4,resource=Stopper_2
-C 185 71.8957 71.9257 7 1; name=Enable,pid=4,resource=Stopper_1
-C 186 71.8957 71.9757 9 0.25; name=Transport,pid=4,type=top,traj=tr_w2_s2,frag=1
-C 187 71.8957 72.3957 12 1; name=Down,pid=4
-C 188 72.3957 72.4457 12 1; name=Grab,pid=4
-C 189 70.917 72.887 5 0.25; name=Transport,pid=3,type=top,traj=tr_b3_s4,frag=1
-E 29 72.887; name=sensor_08,event=await,type=top
-C 190 72.4457 72.9457 12 1; name=Up,pid=4
-C 191 71.7527 73.0784 6 1; name=MoveBeforeBelt5,pid=1
-C 192 72.9457 73.2957 12 1; name=Flip_left,pid=4
-C 193 71.7527 73.5413 15 1; name=MoveAboveBottom,pid=4
-C 194 73.2957 73.7957 12 1; name=Down,pid=4
-C 195 73.7957 73.8357 12 1; name=Ungrab,pid=4
-C 196 73.8357 74.3357 12 1; name=Up,pid=4
-C 197 74.3357 74.6857 12 1; name=Flip_right,pid=4
-C 198 74.6857 74.7157 13 1; name=Disable,pid=4,resource=Stopper_2
-C 199 74.6857 74.7157 7 1; name=Disable,pid=4,resource=Stopper_1
-C 200 67.887 74.804 11 1; name=Assemble,pid=2
-C 201 73.0784 74.8284 6 1; name=MoveAtBelt5,pid=1
-C 202 73.5413 74.9413 15 1; name=MoveAtBottom,pid=4
-C 203 74.9413 75.1413 15 1; name=Grab,pid=4
-C 204 75.1413 76.5413 15 1; name=MoveAboveBottom,pid=4
-C 205 74.7157 77.3357 9 0.25; name=Transport,pid=4,type=top,traj=tr_s2_w4,frag=1
-E 30 77.3357; name=sensor_04,event=await,type=top
-C 206 77.3357 77.3857 9 0.25; name=Transport,pid=4,type=top,traj=tr_w4_s3,frag=1
-C 207 74.804 77.804 16 1; name=AlignBelt,pid=2
-C 208 76.5413 78.3299 15 1; name=MoveBeforeBelt1,pid=4
-C 209 78.3299 79.4499 15 1; name=MoveAtBelt1,pid=4
-C 210 79.4499 79.6499 15 1; name=Ungrab,pid=4
-C 211 79.6499 80.7699 15 1; name=MoveBeforeBelt1,pid=5
-C 212 77.804 80.804 16 1; name=AlignPandP,pid=2
-C 213 80.7699 82.8441 15 1; name=MoveAboveTop,pid=5
-C 214 79.6499 83.0499 0 0.25; name=Transport,pid=4,type=bottom,traj=tr_ungrab_s5,frag=1
-C 215 83.0499 83.1299 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s5_w1,frag=1
-E 31 83.1299; name=sensor_01,event=await,type=bottom
-C 216 83.1299 83.4299 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w1_s1,frag=1
-C 217 83.4299 83.7799 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s1_w2,frag=1
-E 32 83.7799; name=sensor_02,event=await,type=bottom
-C 218 80.804 83.804 16 1; name=AlignBelt,pid=2
-C 219 83.7799 83.8599 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w2_s2,frag=1
-C 220 83.804 84.084 10 1; name=Enable,pid=2
-C 221 84.084 84.174 10 1; name=Disable,pid=2
-C 222 82.8441 84.2441 15 1; name=MoveAtTop,pid=5
-C 223 84.2441 84.4441 15 1; name=Grab,pid=5
-C 224 84.174 84.964 8 1; name=Enable,pid=3
-C 225 84.964 85.754 8 1; name=Disable,pid=3
-C 226 84.4441 85.8441 15 1; name=MoveAboveTop,pid=5
-C 227 83.8599 86.4799 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s2_w4,frag=1
-E 33 86.4799; name=sensor_04,event=await,type=bottom
-C 228 86.4799 86.5299 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w4_s3,frag=1
-C 229 85.8441 87.9184 15 1; name=MoveBeforeBelt1,pid=5
-C 230 84.174 88.234 3 0.25; name=Transport,pid=2,type=product,traj=tr_sw3_b5,frag=1
-C 231 85.754 88.754 16 1; name=AlignPandP,pid=3
-C 232 87.9184 89.0384 15 1; name=MoveAtBelt1,pid=5
-C 233 89.0384 89.2384 15 1; name=Ungrab,pid=5
-C 234 89.2384 90.3584 15 1; name=MoveBeforeBelt1,pid=5
-C 235 88.234 91.294 4 0.25; name=Transport,pid=2,type=product,traj=tr_b5_p20,frag=1
-E 34 91.294; name=sensor_20,event=pass,type=product
-C 236 91.294 91.494 6 1; name=Grab,pid=2
-C 237 88.754 91.754 16 1; name=AlignBelt,pid=3
-C 238 90.3584 92.4327 15 1; name=MoveAboveBottom,pid=5
-C 239 89.2384 92.6384 0 0.25; name=Transport,pid=5,type=top,traj=tr_ungrab_s5,frag=1
-C 240 92.6384 92.7184 9 0.25; name=Transport,pid=5,type=top,traj=tr_s5_w1,frag=1
-E 35 92.7184; name=sensor_01,event=await,type=top
-C 241 92.7184 93.0184 9 0.25; name=Transport,pid=5,type=top,traj=tr_w1_s1,frag=1
-C 242 91.494 93.244 6 1; name=MoveBeforeBelt5,pid=2
-C 243 93.0184 93.3684 9 0.25; name=Transport,pid=5,type=top,traj=tr_s1_w2,frag=1
-E 36 93.3684; name=sensor_02,event=await,type=top
-C 244 93.3684 93.3984 13 1; name=Enable,pid=5,resource=Stopper_2
-C 245 93.3684 93.3984 7 1; name=Enable,pid=5,resource=Stopper_1
-C 246 93.3684 93.4484 9 0.25; name=Transport,pid=5,type=top,traj=tr_w2_s2,frag=1
-C 247 92.4327 93.8327 15 1; name=MoveAtBottom,pid=5
-C 248 93.3684 93.8684 12 1; name=Down,pid=5
-C 249 93.8684 93.9184 12 1; name=Grab,pid=5
-C 250 93.8327 94.0327 15 1; name=Grab,pid=5
-C 251 93.9184 94.4184 12 1; name=Up,pid=5
-C 252 91.754 94.754 16 1; name=AlignPandP,pid=3
-C 253 94.4184 94.7684 12 1; name=Flip_left,pid=5
-C 254 94.754 94.784 17 1; name=Disable,pid=3,resource=Stopper_3
-C 255 94.7684 95.2684 12 1; name=Down,pid=5
-C 256 95.2684 95.3084 12 1; name=Ungrab,pid=5
-C 257 94.0327 95.4327 15 1; name=MoveAboveBottom,pid=5
-C 258 94.784 95.784 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s3_p5,frag=1
-C 259 94.784 95.784 9 0.25; name=Transport,pid=4,type=top,traj=tr_s3_p5,frag=1
-E 37 95.784; name=sensor_05,event=pass,type=bottom
-E 38 95.784; name=sensor_05,event=pass,type=top
-C 260 95.3084 95.8084 12 1; name=Up,pid=5
-C 261 95.784 95.814 2 1; name=Enable,pid=4,resource=Stopper_4
-C 262 95.784 95.814 17 1; name=Enable,pid=4,resource=Stopper_3
-C 263 95.8084 96.1584 12 1; name=Flip_right,pid=5
-C 264 96.1584 96.1884 13 1; name=Disable,pid=5,resource=Stopper_2
-C 265 96.1584 96.1884 7 1; name=Disable,pid=5,resource=Stopper_1
-C 266 95.4327 96.4727 6 1; name=MoveAboveProduct,pid=2
-C 267 95.4327 97.507 15 1; name=MoveBeforeBelt1,pid=5
-C 268 95.784 97.784 9 0.25; name=Transport,pid=4,type=top,traj=tr_p5_b3,frag=1
-C 269 96.4727 97.8727 6 1; name=MoveAtProduct,pid=2
-C 270 97.8727 98.0727 6 1; name=Ungrab,pid=2
-C 271 97.507 98.627 15 1; name=MoveAtBelt1,pid=5
-C 272 96.1884 98.8084 9 0.25; name=Transport,pid=5,type=top,traj=tr_s2_w4,frag=1
-E 39 98.8084; name=sensor_04,event=await,type=top
-C 273 98.627 98.827 15 1; name=Ungrab,pid=5
-C 274 98.8084 98.8584 9 0.25; name=Transport,pid=5,type=top,traj=tr_w4_s3,frag=1
-C 275 98.0727 99.4727 6 1; name=MoveAboveProduct,pid=2
-C 276 97.784 99.754 5 0.25; name=Transport,pid=4,type=top,traj=tr_b3_s4,frag=1
-E 40 99.754; name=sensor_08,event=await,type=top
-C 277 98.827 99.947 15 1; name=MoveBeforeBelt1,pid=6
-C 278 99.4727 100.513 6 1; name=MoveBeforeBelt5,pid=2
-C 279 99.947 100.947 15 1; name=MoveAboveTop,pid=6
-C 280 94.754 101.671 11 1; name=Assemble,pid=3
-C 281 98.827 102.227 0 0.25; name=Transport,pid=5,type=bottom,traj=tr_ungrab_s5,frag=1
-C 282 100.513 102.263 6 1; name=MoveAtBelt5,pid=2
-C 283 102.227 102.307 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s5_w1,frag=1
-E 41 102.307; name=sensor_01,event=await,type=bottom
-C 284 100.947 102.347 15 1; name=MoveAtTop,pid=6
-C 285 102.347 102.547 15 1; name=Grab,pid=6
-C 286 102.307 102.607 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w1_s1,frag=1
-C 287 102.607 102.957 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s1_w2,frag=1
-E 42 102.957; name=sensor_02,event=await,type=bottom
-C 288 102.957 103.037 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w2_s2,frag=1
-C 289 102.547 103.947 15 1; name=MoveAboveTop,pid=6
-C 290 101.671 104.671 16 1; name=AlignBelt,pid=3
-C 291 103.947 104.947 15 1; name=MoveBeforeBelt1,pid=6
-C 292 103.037 105.657 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s2_w4,frag=1
-E 43 105.657; name=sensor_04,event=await,type=bottom
-C 293 105.657 105.707 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w4_s3,frag=1
-C 294 104.947 106.067 15 1; name=MoveAtBelt1,pid=6
-C 295 106.067 106.267 15 1; name=Ungrab,pid=6
-C 296 106.267 107.387 15 1; name=MoveBeforeBelt1,pid=6
-C 297 104.671 107.671 16 1; name=AlignPandP,pid=3
-C 298 107.387 108.318 15 1; name=MoveAboveBottom,pid=6
-C 299 106.267 109.667 0 0.25; name=Transport,pid=6,type=top,traj=tr_ungrab_s5,frag=1
-C 300 108.318 109.718 15 1; name=MoveAtBottom,pid=6
-C 301 109.667 109.747 9 0.25; name=Transport,pid=6,type=top,traj=tr_s5_w1,frag=1
-E 44 109.747; name=sensor_01,event=await,type=top
-C 302 109.718 109.918 15 1; name=Grab,pid=6
-C 303 109.747 110.047 9 0.25; name=Transport,pid=6,type=top,traj=tr_w1_s1,frag=1
-C 304 110.047 110.397 9 0.25; name=Transport,pid=6,type=top,traj=tr_s1_w2,frag=1
-E 45 110.397; name=sensor_02,event=await,type=top
-C 305 110.397 110.427 7 1; name=Enable,pid=6,resource=Stopper_1
-C 306 110.397 110.427 13 1; name=Enable,pid=6,resource=Stopper_2
-C 307 110.397 110.477 9 0.25; name=Transport,pid=6,type=top,traj=tr_w2_s2,frag=1
-C 308 107.671 110.671 16 1; name=AlignBelt,pid=3
-C 309 110.397 110.897 12 1; name=Down,pid=6
-C 310 110.897 110.947 12 1; name=Grab,pid=6
-C 311 110.671 110.951 10 1; name=Enable,pid=3
-C 312 110.951 111.041 10 1; name=Disable,pid=3
-C 313 109.918 111.318 15 1; name=MoveAboveBottom,pid=6
-C 314 110.947 111.447 12 1; name=Up,pid=6
-C 315 111.447 111.797 12 1; name=Flip_left,pid=6
-C 316 111.041 111.831 8 1; name=Enable,pid=4
-C 317 111.318 112.25 15 1; name=MoveBeforeBelt1,pid=6
-C 318 111.797 112.297 12 1; name=Down,pid=6
-C 319 112.297 112.337 12 1; name=Ungrab,pid=6
-C 320 111.831 112.621 8 1; name=Disable,pid=4
-C 321 112.337 112.837 12 1; name=Up,pid=6
-C 322 112.837 113.187 12 1; name=Flip_right,pid=6
-C 323 113.187 113.217 7 1; name=Disable,pid=6,resource=Stopper_1
-C 324 113.187 113.217 13 1; name=Disable,pid=6,resource=Stopper_2
-C 325 112.25 113.37 15 1; name=MoveAtBelt1,pid=6
-C 326 113.37 113.57 15 1; name=Ungrab,pid=6
-C 327 113.57 114.69 15 1; name=MoveBeforeBelt1,pid=7
-C 328 111.041 115.101 3 0.25; name=Transport,pid=3,type=product,traj=tr_sw3_b5,frag=1
-C 329 112.621 115.621 16 1; name=AlignPandP,pid=4
-C 330 113.217 115.837 9 0.25; name=Transport,pid=6,type=top,traj=tr_s2_w4,frag=1
-E 46 115.837; name=sensor_04,event=await,type=top
-C 331 115.837 115.887 9 0.25; name=Transport,pid=6,type=top,traj=tr_w4_s3,frag=1
-C 332 114.69 115.907 15 1; name=MoveAboveTop,pid=7
-C 333 113.57 116.97 0 0.25; name=Transport,pid=6,type=bottom,traj=tr_ungrab_s5,frag=1
-C 334 116.97 117.05 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s5_w1,frag=1
-E 47 117.05; name=sensor_01,event=await,type=bottom
-C 335 115.907 117.307 15 1; name=MoveAtTop,pid=7
-C 336 117.05 117.35 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w1_s1,frag=1
-C 337 117.307 117.507 15 1; name=Grab,pid=7
-C 338 117.35 117.7 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s1_w2,frag=1
-E 48 117.7; name=sensor_02,event=await,type=bottom
-C 339 117.7 117.78 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w2_s2,frag=1
-C 340 115.101 118.161 4 0.25; name=Transport,pid=3,type=product,traj=tr_b5_p20,frag=1
-E 49 118.161; name=sensor_20,event=pass,type=product
-C 341 118.161 118.361 6 1; name=Grab,pid=3
-C 342 115.621 118.621 16 1; name=AlignBelt,pid=4
-C 343 117.507 118.907 15 1; name=MoveAboveTop,pid=7
-C 344 118.361 120.111 6 1; name=MoveBeforeBelt5,pid=3
-C 345 118.907 120.124 15 1; name=MoveBeforeBelt1,pid=7
-C 346 117.78 120.4 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s2_w4,frag=1
-E 50 120.4; name=sensor_04,event=await,type=bottom
-C 347 120.4 120.45 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w4_s3,frag=1
-C 348 120.111 120.865 6 1; name=MoveAboveProduct,pid=3
-C 349 120.124 121.244 15 1; name=MoveAtBelt1,pid=7
-C 350 121.244 121.444 15 1; name=Ungrab,pid=7
-C 351 118.621 121.621 16 1; name=AlignPandP,pid=4
-C 352 121.621 121.651 17 1; name=Disable,pid=4,resource=Stopper_3
-C 353 120.865 122.265 6 1; name=MoveAtProduct,pid=3
-C 354 122.265 122.465 6 1; name=Ungrab,pid=3
-C 355 121.444 122.564 15 1; name=MoveBeforeBelt1,pid=7
-C 356 121.651 122.651 9 0.25; name=Transport,pid=6,type=top,traj=tr_s3_p5,frag=1
-E 51 122.651; name=sensor_05,event=pass,type=top
-C 357 121.651 122.651 9 0.25; name=Transport,pid=5,type=top,traj=tr_s3_p5,frag=1
-C 358 121.651 122.651 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s3_p5,frag=1
-E 52 122.651; name=sensor_05,event=pass,type=top
-C 359 121.651 122.651 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s3_p5,frag=1
-E 53 122.651; name=sensor_05,event=pass,type=bottom
-E 54 122.651; name=sensor_05,event=pass,type=bottom
-C 360 122.651 122.681 2 1; name=Enable,pid=6,resource=Stopper_4
-C 361 122.651 122.681 17 1; name=Enable,pid=5,resource=Stopper_3
-C 362 122.681 122.711 2 1; name=Enable,pid=5,resource=Stopper_4
-C 363 122.681 122.711 17 1; name=Enable,pid=6,resource=Stopper_3
-C 364 122.465 123.865 6 1; name=MoveAboveProduct,pid=3
-C 365 123.865 124.62 6 1; name=MoveBeforeBelt5,pid=3
-C 366 122.651 124.651 9 0.25; name=Transport,pid=5,type=top,traj=tr_p5_b3,frag=1
-C 367 122.651 124.651 9 0.25; name=Transport,pid=6,type=top,traj=tr_p5_b3,frag=1
-C 368 121.444 124.844 0 0.25; name=Transport,pid=7,type=top,traj=tr_ungrab_s5,frag=1
-C 369 124.844 124.924 9 0.25; name=Transport,pid=7,type=top,traj=tr_s5_w1,frag=1
-E 55 124.924; name=sensor_01,event=await,type=top
-C 370 123.865 125.082 15 1; name=MoveAboveBottom,pid=7
-C 371 124.924 125.224 9 0.25; name=Transport,pid=7,type=top,traj=tr_w1_s1,frag=1
-C 372 125.224 125.574 9 0.25; name=Transport,pid=7,type=top,traj=tr_s1_w2,frag=1
-E 56 125.574; name=sensor_02,event=await,type=top
-C 373 125.574 125.604 7 1; name=Enable,pid=7,resource=Stopper_1
-C 374 125.574 125.604 13 1; name=Enable,pid=7,resource=Stopper_2
-C 375 125.574 125.654 9 0.25; name=Transport,pid=7,type=top,traj=tr_w2_s2,frag=1
-C 376 125.574 126.074 12 1; name=Down,pid=7
-C 377 126.074 126.124 12 1; name=Grab,pid=7
-C 378 124.62 126.37 6 1; name=MoveAtBelt5,pid=3
-C 379 125.082 126.482 15 1; name=MoveAtBottom,pid=7
-C 380 124.651 126.621 5 0.25; name=Transport,pid=5,type=top,traj=tr_b3_s4,frag=1
-C 381 124.651 126.621 5 0.25; name=Transport,pid=6,type=top,traj=tr_b3_s4,frag=1
-E 57 126.621; name=sensor_08,event=await,type=top
-E 58 126.621; name=sensor_08,event=await,type=top
-C 382 126.124 126.624 12 1; name=Up,pid=7
-C 383 126.482 126.682 15 1; name=Grab,pid=7
-C 384 126.624 126.974 12 1; name=Flip_left,pid=7
-C 385 126.974 127.474 12 1; name=Down,pid=7
-C 386 127.474 127.514 12 1; name=Ungrab,pid=7
-C 387 127.514 128.014 12 1; name=Up,pid=7
-C 388 126.682 128.082 15 1; name=MoveAboveBottom,pid=7
-C 389 128.014 128.364 12 1; name=Flip_right,pid=7
-C 390 128.364 128.394 7 1; name=Disable,pid=7,resource=Stopper_1
-C 391 128.364 128.394 13 1; name=Disable,pid=7,resource=Stopper_2
-C 392 121.621 128.538 11 1; name=Assemble,pid=4
-C 393 128.082 129.3 15 1; name=MoveBeforeBelt1,pid=7
-C 394 129.3 130.42 15 1; name=MoveAtBelt1,pid=7
-C 395 130.42 130.62 15 1; name=Ungrab,pid=7
-C 396 128.394 131.014 9 0.25; name=Transport,pid=7,type=top,traj=tr_s2_w4,frag=1
-E 59 131.014; name=sensor_04,event=await,type=top
-C 397 131.014 131.064 9 0.25; name=Transport,pid=7,type=top,traj=tr_w4_s3,frag=1
-C 398 128.538 131.538 16 1; name=AlignBelt,pid=4
-C 399 130.62 131.74 15 1; name=MoveBeforeBelt1,pid=8
-C 400 131.74 133.242 15 1; name=MoveAboveTop,pid=8
-C 401 130.62 134.02 0 0.25; name=Transport,pid=7,type=bottom,traj=tr_ungrab_s5,frag=1
-C 402 134.02 134.1 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s5_w1,frag=1
-E 60 134.1; name=sensor_01,event=await,type=bottom
-C 403 134.1 134.4 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w1_s1,frag=1
-C 404 131.538 134.538 16 1; name=AlignPandP,pid=4
-C 405 133.242 134.642 15 1; name=MoveAtTop,pid=8
-C 406 134.4 134.75 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s1_w2,frag=1
-E 61 134.75; name=sensor_02,event=await,type=bottom
-C 407 134.75 134.83 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w2_s2,frag=1
-C 408 134.642 134.842 15 1; name=Grab,pid=8
-C 409 134.842 136.242 15 1; name=MoveAboveTop,pid=8
-C 410 134.83 137.45 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s2_w4,frag=1
-E 62 137.45; name=sensor_04,event=await,type=bottom
-C 411 137.45 137.5 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w4_s3,frag=1
-C 412 134.538 137.538 16 1; name=AlignBelt,pid=4
-C 413 136.242 137.745 15 1; name=MoveBeforeBelt1,pid=8
-C 414 137.538 137.818 10 1; name=Enable,pid=4
-C 415 137.818 137.908 10 1; name=Disable,pid=4
-C 416 137.908 138.698 8 1; name=Enable,pid=5
-C 417 137.745 138.865 15 1; name=MoveAtBelt1,pid=8
-C 418 138.865 139.065 15 1; name=Ungrab,pid=8
-C 419 138.698 139.488 8 1; name=Disable,pid=5
-C 420 139.065 140.185 15 1; name=MoveBeforeBelt1,pid=8
-C 421 140.185 141.688 15 1; name=MoveAboveBottom,pid=8
-C 422 137.908 141.968 3 0.25; name=Transport,pid=4,type=product,traj=tr_sw3_b5,frag=1
-C 423 139.065 142.465 0 0.25; name=Transport,pid=8,type=top,traj=tr_ungrab_s5,frag=1
-C 424 139.488 142.488 16 1; name=AlignPandP,pid=5
-C 425 142.465 142.545 9 0.25; name=Transport,pid=8,type=top,traj=tr_s5_w1,frag=1
-E 63 142.545; name=sensor_01,event=await,type=top
-C 426 142.545 142.845 9 0.25; name=Transport,pid=8,type=top,traj=tr_w1_s1,frag=1
-C 427 141.688 143.088 15 1; name=MoveAtBottom,pid=8
-C 428 142.845 143.195 9 0.25; name=Transport,pid=8,type=top,traj=tr_s1_w2,frag=1
-E 64 143.195; name=sensor_02,event=await,type=top
-C 429 143.195 143.225 7 1; name=Enable,pid=8,resource=Stopper_1
-C 430 143.195 143.225 13 1; name=Enable,pid=8,resource=Stopper_2
-C 431 143.195 143.275 9 0.25; name=Transport,pid=8,type=top,traj=tr_w2_s2,frag=1
-C 432 143.088 143.288 15 1; name=Grab,pid=8
-C 433 143.195 143.695 12 1; name=Down,pid=8
-C 434 143.695 143.745 12 1; name=Grab,pid=8
-C 435 143.745 144.245 12 1; name=Up,pid=8
-C 436 144.245 144.595 12 1; name=Flip_left,pid=8
-C 437 143.288 144.688 15 1; name=MoveAboveBottom,pid=8
-C 438 141.968 145.028 4 0.25; name=Transport,pid=4,type=product,traj=tr_b5_p20,frag=1
-E 65 145.028; name=sensor_20,event=pass,type=product
-C 439 144.595 145.095 12 1; name=Down,pid=8
-C 440 145.095 145.135 12 1; name=Ungrab,pid=8
-C 441 145.028 145.228 6 1; name=Grab,pid=4
-C 442 142.488 145.488 16 1; name=AlignBelt,pid=5
-C 443 145.135 145.635 12 1; name=Up,pid=8
-C 444 145.635 145.985 12 1; name=Flip_right,pid=8
-C 445 145.985 146.015 7 1; name=Disable,pid=8,resource=Stopper_1
-C 446 145.985 146.015 13 1; name=Disable,pid=8,resource=Stopper_2
-C 447 144.688 146.191 15 1; name=MoveBeforeBelt1,pid=8
-C 448 145.228 146.978 6 1; name=MoveBeforeBelt5,pid=4
-C 449 146.191 147.311 15 1; name=MoveAtBelt1,pid=8
-C 450 146.978 147.447 6 1; name=MoveAboveProduct,pid=4
-C 451 147.311 147.511 15 1; name=Ungrab,pid=8
-C 452 145.488 148.488 16 1; name=AlignPandP,pid=5
-C 453 148.488 148.518 17 1; name=Disable,pid=5,resource=Stopper_3
-C 454 147.511 148.631 15 1; name=MoveBeforeBelt1,pid=9
-C 455 146.015 148.635 9 0.25; name=Transport,pid=8,type=top,traj=tr_s2_w4,frag=1
-E 66 148.635; name=sensor_04,event=await,type=top
-C 456 148.635 148.685 9 0.25; name=Transport,pid=8,type=top,traj=tr_w4_s3,frag=1
-C 457 147.447 148.847 6 1; name=MoveAtProduct,pid=4
-C 458 148.847 149.047 6 1; name=Ungrab,pid=4
-C 459 148.488 149.278 8 1; name=Enable,pid=6
-C 460 148.518 149.518 9 0.25; name=Transport,pid=7,type=top,traj=tr_s3_p5,frag=1
-C 461 148.518 149.518 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s3_p5,frag=1
-E 67 149.518; name=sensor_05,event=pass,type=top
-E 68 149.518; name=sensor_05,event=pass,type=bottom
-C 462 149.518 149.548 17 1; name=Enable,pid=7,resource=Stopper_3
-C 463 149.518 149.548 2 1; name=Enable,pid=7,resource=Stopper_4
-C 464 148.685 149.685 9 0.25; name=Transport,pid=8,type=top,traj=tr_s3_p5,frag=1
-E 69 149.685; name=sensor_05,event=pass,type=top
-C 465 149.685 149.715 2 1; name=Enable,pid=8,resource=Stopper_4
-C 466 149.278 150.068 8 1; name=Disable,pid=6
-C 467 149.047 150.447 6 1; name=MoveAboveProduct,pid=4
-C 468 147.511 150.911 0 0.25; name=Transport,pid=8,type=bottom,traj=tr_ungrab_s5,frag=1
-C 469 150.447 150.915 6 1; name=MoveBeforeBelt5,pid=4
-C 470 150.911 150.991 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s5_w1,frag=1
-E 70 150.991; name=sensor_01,event=await,type=bottom
-C 471 150.991 151.291 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w1_s1,frag=1
-C 472 149.518 151.518 9 0.25; name=Transport,pid=7,type=top,traj=tr_p5_b3,frag=1
-C 473 151.291 151.641 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s1_w2,frag=1
-E 71 151.641; name=sensor_02,event=await,type=bottom
-C 474 149.685 151.685 9 0.25; name=Transport,pid=8,type=top,traj=tr_p5_b3,frag=1
-C 475 151.641 151.721 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w2_s2,frag=1
-C 476 150.447 152.235 15 1; name=MoveAboveTop,pid=9
-C 477 150.915 152.665 6 1; name=MoveAtBelt5,pid=4
-C 478 150.068 153.068 16 1; name=AlignPandP,pid=6
-C 479 151.518 153.488 5 0.25; name=Transport,pid=7,type=top,traj=tr_b3_s4,frag=1
-E 72 153.488; name=sensor_08,event=await,type=top
-C 480 152.235 153.635 15 1; name=MoveAtTop,pid=9
-C 481 151.685 153.655 5 0.25; name=Transport,pid=8,type=top,traj=tr_b3_s4,frag=1
-E 73 153.655; name=sensor_08,event=await,type=top
-C 482 153.635 153.835 15 1; name=Grab,pid=9
-C 483 151.721 154.341 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s2_w4,frag=1
-E 74 154.341; name=sensor_04,event=await,type=bottom
-C 484 154.341 154.391 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w4_s3,frag=1
-C 485 153.835 155.235 15 1; name=MoveAboveTop,pid=9
-C 486 153.068 156.068 16 1; name=AlignBelt,pid=6
-C 487 155.235 157.024 15 1; name=MoveBeforeBelt1,pid=9
-C 488 157.024 158.144 15 1; name=MoveAtBelt1,pid=9
-C 489 158.144 158.344 15 1; name=Ungrab,pid=9
-C 490 156.068 159.068 16 1; name=AlignPandP,pid=6
-C 491 159.068 159.098 17 1; name=Disable,pid=6,resource=Stopper_3
-C 492 158.344 159.464 15 1; name=MoveBeforeBelt1,pid=9
-C 493 159.098 160.098 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s3_p5,frag=1
-E 75 160.098; name=sensor_05,event=pass,type=bottom
-C 494 160.098 160.128 17 1; name=Enable,pid=8,resource=Stopper_3
-C 495 159.464 161.252 15 1; name=MoveAboveBottom,pid=9
-C 496 158.344 161.744 0 0.25; name=Transport,pid=9,type=top,traj=tr_ungrab_s5,frag=1
-C 497 161.744 161.824 9 0.25; name=Transport,pid=9,type=top,traj=tr_s5_w1,frag=1
-E 76 161.824; name=sensor_01,event=await,type=top
-C 498 161.824 162.124 9 0.25; name=Transport,pid=9,type=top,traj=tr_w1_s1,frag=1
-C 499 162.124 162.474 9 0.25; name=Transport,pid=9,type=top,traj=tr_s1_w2,frag=1
-E 77 162.474; name=sensor_02,event=await,type=top
-C 500 162.474 162.504 7 1; name=Enable,pid=9,resource=Stopper_1
-C 501 162.474 162.504 13 1; name=Enable,pid=9,resource=Stopper_2
-C 502 162.474 162.554 9 0.25; name=Transport,pid=9,type=top,traj=tr_w2_s2,frag=1
-C 503 161.252 162.652 15 1; name=MoveAtBottom,pid=9
-C 504 162.652 162.852 15 1; name=Grab,pid=9
-C 505 162.474 162.974 12 1; name=Down,pid=9
-C 506 162.974 163.024 12 1; name=Grab,pid=9
-C 507 163.024 163.524 12 1; name=Up,pid=9
-C 508 163.524 163.874 12 1; name=Flip_left,pid=9
-C 509 162.852 164.252 15 1; name=MoveAboveBottom,pid=9
-C 510 163.874 164.374 12 1; name=Down,pid=9
-C 511 164.374 164.414 12 1; name=Ungrab,pid=9
-C 512 164.414 164.914 12 1; name=Up,pid=9
-C 513 164.914 165.264 12 1; name=Flip_right,pid=9
-C 514 165.264 165.294 7 1; name=Disable,pid=9,resource=Stopper_1
-C 515 165.264 165.294 13 1; name=Disable,pid=9,resource=Stopper_2
-C 516 159.068 165.985 11 1; name=Assemble,pid=5
-C 517 164.252 166.041 15 1; name=MoveBeforeBelt1,pid=9
-C 518 166.041 167.161 15 1; name=MoveAtBelt1,pid=9
-C 519 167.161 167.361 15 1; name=Ungrab,pid=9
-C 520 165.294 167.914 9 0.25; name=Transport,pid=9,type=top,traj=tr_s2_w4,frag=1
-E 78 167.914; name=sensor_04,event=await,type=top
-C 521 167.914 167.964 9 0.25; name=Transport,pid=9,type=top,traj=tr_w4_s3,frag=1
-C 522 167.361 168.481 15 1; name=MoveBeforeBelt1,pid=10
-C 523 165.985 168.985 16 1; name=AlignBelt,pid=5
-C 524 168.481 170.555 15 1; name=MoveAboveTop,pid=10
-C 525 167.361 170.761 0 0.25; name=Transport,pid=9,type=bottom,traj=tr_ungrab_s5,frag=1
-C 526 170.761 170.841 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s5_w1,frag=1
-E 79 170.841; name=sensor_01,event=await,type=bottom
-C 527 170.841 171.141 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w1_s1,frag=1
-C 528 171.141 171.491 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s1_w2,frag=1
-E 80 171.491; name=sensor_02,event=await,type=bottom
-C 529 171.491 171.571 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w2_s2,frag=1
-C 530 170.555 171.955 15 1; name=MoveAtTop,pid=10
-C 531 168.985 171.985 16 1; name=AlignPandP,pid=5
-C 532 171.955 172.155 15 1; name=Grab,pid=10
-C 533 172.155 173.555 15 1; name=MoveAboveTop,pid=10
-C 534 171.571 174.191 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s2_w4,frag=1
-E 81 174.191; name=sensor_04,event=await,type=bottom
-C 535 174.191 174.241 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w4_s3,frag=1
-C 536 171.985 174.985 16 1; name=AlignBelt,pid=5
-C 537 174.985 175.265 10 1; name=Enable,pid=5
-C 538 175.265 175.355 10 1; name=Disable,pid=5
-C 539 173.555 175.629 15 1; name=MoveBeforeBelt1,pid=10
-C 540 175.355 176.145 8 1; name=Enable,pid=7
-C 541 175.629 176.749 15 1; name=MoveAtBelt1,pid=10
-C 542 176.145 176.935 8 1; name=Disable,pid=7
-C 543 176.749 176.949 15 1; name=Ungrab,pid=10
-C 544 176.949 178.069 15 1; name=MoveBeforeBelt1,pid=10
-C 545 175.355 179.415 3 0.25; name=Transport,pid=5,type=product,traj=tr_sw3_b5,frag=1
-C 546 176.935 179.935 16 1; name=AlignPandP,pid=7
-C 547 178.069 180.144 15 1; name=MoveAboveBottom,pid=10
-C 548 176.949 180.349 0 0.25; name=Transport,pid=10,type=top,traj=tr_ungrab_s5,frag=1
-C 549 180.349 180.429 9 0.25; name=Transport,pid=10,type=top,traj=tr_s5_w1,frag=1
-E 82 180.429; name=sensor_01,event=await,type=top
-C 550 180.429 180.729 9 0.25; name=Transport,pid=10,type=top,traj=tr_w1_s1,frag=1
-C 551 180.729 181.079 9 0.25; name=Transport,pid=10,type=top,traj=tr_s1_w2,frag=1
-E 83 181.079; name=sensor_02,event=await,type=top
-C 552 181.079 181.109 7 1; name=Enable,pid=10,resource=Stopper_1
-C 553 181.079 181.109 13 1; name=Enable,pid=10,resource=Stopper_2
-C 554 181.079 181.159 9 0.25; name=Transport,pid=10,type=top,traj=tr_w2_s2,frag=1
-C 555 180.144 181.544 15 1; name=MoveAtBottom,pid=10
-C 556 181.079 181.579 12 1; name=Down,pid=10
-C 557 181.579 181.629 12 1; name=Grab,pid=10
-C 558 181.544 181.744 15 1; name=Grab,pid=10
-C 559 181.629 182.129 12 1; name=Up,pid=10
-C 560 179.415 182.475 4 0.25; name=Transport,pid=5,type=product,traj=tr_b5_p20,frag=1
-E 84 182.475; name=sensor_20,event=pass,type=product
-C 561 182.129 182.479 12 1; name=Flip_left,pid=10
-C 562 182.475 182.675 6 1; name=Grab,pid=5
-C 563 179.935 182.935 16 1; name=AlignBelt,pid=7
-C 564 182.479 182.979 12 1; name=Down,pid=10
-C 565 182.979 183.019 12 1; name=Ungrab,pid=10
-C 566 181.744 183.144 15 1; name=MoveAboveBottom,pid=10
-C 567 183.019 183.519 12 1; name=Up,pid=10
-C 568 183.519 183.869 12 1; name=Flip_right,pid=10
-C 569 183.869 183.899 13 1; name=Disable,pid=10,resource=Stopper_2
-C 570 183.869 183.899 7 1; name=Disable,pid=10,resource=Stopper_1
-C 571 182.675 184.425 6 1; name=MoveBeforeBelt5,pid=5
-C 572 184.425 184.608 6 1; name=MoveAboveProduct,pid=5
-C 573 183.144 185.218 15 1; name=MoveBeforeBelt1,pid=10
-C 574 182.935 185.935 16 1; name=AlignPandP,pid=7
-C 575 185.935 185.965 17 1; name=Disable,pid=7,resource=Stopper_3
-C 576 184.608 186.008 6 1; name=MoveAtProduct,pid=5
-C 577 186.008 186.208 6 1; name=Ungrab,pid=5
-C 578 185.218 186.338 15 1; name=MoveAtBelt1,pid=10
-C 579 183.899 186.519 9 0.25; name=Transport,pid=10,type=top,traj=tr_s2_w4,frag=1
-E 85 186.519; name=sensor_04,event=await,type=top
-C 580 186.338 186.538 15 1; name=Ungrab,pid=10
-C 581 186.519 186.569 9 0.25; name=Transport,pid=10,type=top,traj=tr_w4_s3,frag=1
-C 582 185.935 186.725 8 1; name=Enable,pid=8
-C 583 185.965 186.965 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s3_p5,frag=1
-C 584 185.965 186.965 9 0.25; name=Transport,pid=9,type=top,traj=tr_s3_p5,frag=1
-E 86 186.965; name=sensor_05,event=pass,type=bottom
-E 87 186.965; name=sensor_05,event=pass,type=top
-C 585 186.965 186.995 17 1; name=Enable,pid=9,resource=Stopper_3
-C 586 186.965 186.995 2 1; name=Enable,pid=9,resource=Stopper_4
-C 587 186.725 187.515 8 1; name=Disable,pid=8
-C 588 186.569 187.569 9 0.25; name=Transport,pid=10,type=top,traj=tr_s3_p5,frag=1
-E 88 187.569; name=sensor_05,event=pass,type=top
-C 589 187.569 187.599 2 1; name=Enable,pid=10,resource=Stopper_4
-C 590 186.208 187.608 6 1; 
+C 2 0 0.56 16 1; name=AlignBelt,pid=-1
+C 3 0.56 3.56 15 1; name=MoveAboveTop,pid=1
+C 4 3.56 4.46 15 1; name=MoveAtTop,pid=1
+C 5 4.46 4.66 15 1; name=Grab,pid=1
+C 6 4.66 5.56 15 1; name=MoveAboveTop,pid=1
+C 7 5.56 6.81 15 1; name=MoveBeforeBelt1,pid=1
+C 8 6.81 7.51 15 1; name=MoveAtBelt1,pid=1
+C 9 7.51 7.71 15 1; name=Ungrab,pid=1
+C 10 7.71 8.41 15 1; name=MoveBeforeBelt1,pid=1
+C 11 8.41 9.3475 15 1; name=MoveAboveBottom,pid=1
+C 12 7.71 9.97667 0 0.25; name=Transport,pid=1,type=top,traj=tr_ungrab_s5,frag=1
+C 13 9.97667 10.03 9 0.25; name=Transport,pid=1,type=top,traj=tr_s5_w1,frag=1
+E 0 10.03; name=sensor_01,event=await,type=top
+C 14 10.03 10.23 9 0.25; name=Transport,pid=1,type=top,traj=tr_w1_s1,frag=1
+C 15 9.3475 10.2475 15 1; name=MoveAtBottom,pid=1
+C 16 10.2475 10.4475 15 1; name=Grab,pid=1
+C 17 10.23 10.4633 9 0.25; name=Transport,pid=1,type=top,traj=tr_s1_w2,frag=1
+E 1 10.4633; name=sensor_02,event=await,type=top
+C 18 10.4633 10.4933 13 1; name=Enable,pid=1,resource=Stopper_2
+C 19 10.4633 10.4933 7 1; name=Enable,pid=1,resource=Stopper_1
+C 20 10.4633 10.5167 9 0.25; name=Transport,pid=1,type=top,traj=tr_w2_s2,frag=1
+C 21 10.4633 10.9633 12 1; name=Down,pid=1
+C 22 10.9633 11.0133 12 1; name=Grab,pid=1
+C 23 10.4475 11.3475 15 1; name=MoveAboveBottom,pid=1
+C 24 11.0133 11.5133 12 1; name=Up,pid=1
+C 25 11.5133 11.8633 12 1; name=Flip_left,pid=1
+C 26 11.3475 12.285 15 1; name=MoveBeforeBelt1,pid=1
+C 27 11.8633 12.3633 12 1; name=Down,pid=1
+C 28 12.3633 12.4033 12 1; name=Ungrab,pid=1
+C 29 12.4033 12.9033 12 1; name=Up,pid=1
+C 30 12.285 12.985 15 1; name=MoveAtBelt1,pid=1
+C 31 12.985 13.185 15 1; name=Ungrab,pid=1
+C 32 12.9033 13.2533 12 1; name=Flip_right,pid=1
+C 33 13.2533 13.2833 7 1; name=Disable,pid=1,resource=Stopper_1
+C 34 13.2533 13.2833 13 1; name=Disable,pid=1,resource=Stopper_2
+C 35 13.185 13.885 15 1; name=MoveBeforeBelt1,pid=2
+C 36 13.2833 15.03 9 0.25; name=Transport,pid=1,type=top,traj=tr_s2_w4,frag=1
+E 2 15.03; name=sensor_04,event=await,type=top
+C 37 15.03 15.0633 9 0.25; name=Transport,pid=1,type=top,traj=tr_w4_s3,frag=1
+C 38 13.885 15.135 15 1; name=MoveAboveTop,pid=2
+C 39 13.185 15.4517 0 0.25; name=Transport,pid=1,type=bottom,traj=tr_ungrab_s5,frag=1
+C 40 15.4517 15.505 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s5_w1,frag=1
+E 3 15.505; name=sensor_01,event=await,type=bottom
+C 41 15.505 15.705 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w1_s1,frag=1
+C 42 15.0633 15.73 9 0.25; name=Transport,pid=1,type=top,traj=tr_s3_p5,frag=1
+E 4 15.73; name=sensor_05,event=pass,type=top
+C 43 15.73 15.76 2 1; name=Enable,pid=1,resource=Stopper_4
+C 44 15.705 15.9383 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s1_w2,frag=1
+E 5 15.9383; name=sensor_02,event=await,type=bottom
+C 45 15.9383 15.9917 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w2_s2,frag=1
+C 46 15.135 16.035 15 1; name=MoveAtTop,pid=2
+C 47 16.035 16.235 15 1; name=Grab,pid=2
+C 48 15.73 17.0633 9 0.25; name=Transport,pid=1,type=top,traj=tr_p5_b3,frag=1
+C 49 16.235 17.135 15 1; name=MoveAboveTop,pid=2
+C 50 15.9917 17.7383 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s2_w4,frag=1
+E 6 17.7383; name=sensor_04,event=await,type=bottom
+C 51 17.7383 17.7717 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_w4_s3,frag=1
+C 52 17.0633 18.3767 5 0.25; name=Transport,pid=1,type=top,traj=tr_b3_s4,frag=1
+E 7 18.3767; name=sensor_08,event=await,type=top
+C 53 17.135 18.385 15 1; name=MoveBeforeBelt1,pid=2
+C 54 17.7717 18.4383 9 0.25; name=Transport,pid=1,type=bottom,traj=tr_s3_p5,frag=1
+E 8 18.4383; name=sensor_05,event=pass,type=bottom
+C 55 18.4383 18.4683 17 1; name=Enable,pid=1,resource=Stopper_3
+C 56 18.385 19.085 15 1; name=MoveAtBelt1,pid=2
+C 57 18.4383 19.2283 8 1; name=Enable,pid=1
+C 58 19.085 19.285 15 1; name=Ungrab,pid=2
+C 59 19.285 19.985 15 1; name=MoveBeforeBelt1,pid=2
+C 60 19.2283 20.0183 8 1; name=Disable,pid=1
+C 61 20.0183 20.5783 16 1; name=AlignPandP,pid=1
+C 62 19.985 20.9225 15 1; name=MoveAboveBottom,pid=2
+C 63 20.5783 21.1383 16 1; name=AlignBelt,pid=1
+C 64 19.285 21.5517 0 0.25; name=Transport,pid=2,type=top,traj=tr_ungrab_s5,frag=1
+C 65 21.5517 21.605 9 0.25; name=Transport,pid=2,type=top,traj=tr_s5_w1,frag=1
+E 9 21.605; name=sensor_01,event=await,type=top
+C 66 21.1383 21.6983 16 1; name=AlignPandP,pid=1
+C 67 21.6983 21.7283 17 1; name=Disable,pid=1,resource=Stopper_3
+C 68 21.605 21.805 9 0.25; name=Transport,pid=2,type=top,traj=tr_w1_s1,frag=1
+C 69 20.9225 21.8225 15 1; name=MoveAtBottom,pid=2
+C 70 21.8225 22.0225 15 1; name=Grab,pid=2
+C 71 21.805 22.0383 9 0.25; name=Transport,pid=2,type=top,traj=tr_s1_w2,frag=1
+E 10 22.0383; name=sensor_02,event=await,type=top
+C 72 22.0383 22.0683 7 1; name=Enable,pid=2,resource=Stopper_1
+C 73 22.0383 22.0683 13 1; name=Enable,pid=2,resource=Stopper_2
+C 74 22.0383 22.0917 9 0.25; name=Transport,pid=2,type=top,traj=tr_w2_s2,frag=1
+C 75 22.0383 22.5383 12 1; name=Down,pid=2
+C 76 22.5383 22.5883 12 1; name=Grab,pid=2
+C 77 22.0225 22.9225 15 1; name=MoveAboveBottom,pid=2
+C 78 22.5883 23.0883 12 1; name=Up,pid=2
+C 79 23.0883 23.4383 12 1; name=Flip_left,pid=2
+C 80 22.9225 23.86 15 1; name=MoveBeforeBelt1,pid=2
+C 81 23.4383 23.9383 12 1; name=Down,pid=2
+C 82 23.9383 23.9783 12 1; name=Ungrab,pid=2
+C 83 23.9783 24.4783 12 1; name=Up,pid=2
+C 84 23.86 24.56 15 1; name=MoveAtBelt1,pid=2
+C 85 24.56 24.76 15 1; name=Ungrab,pid=2
+C 86 24.4783 24.8283 12 1; name=Flip_right,pid=2
+C 87 24.8283 24.8583 7 1; name=Disable,pid=2,resource=Stopper_1
+C 88 24.8283 24.8583 13 1; name=Disable,pid=2,resource=Stopper_2
+C 89 24.76 25.46 15 1; name=MoveBeforeBelt1,pid=3
+C 90 24.8583 26.605 9 0.25; name=Transport,pid=2,type=top,traj=tr_s2_w4,frag=1
+E 11 26.605; name=sensor_04,event=await,type=top
+C 91 26.605 26.6383 9 0.25; name=Transport,pid=2,type=top,traj=tr_w4_s3,frag=1
+C 92 25.46 26.71 15 1; name=MoveAboveTop,pid=3
+C 93 24.76 27.0267 0 0.25; name=Transport,pid=2,type=bottom,traj=tr_ungrab_s5,frag=1
+C 94 27.0267 27.08 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s5_w1,frag=1
+E 12 27.08; name=sensor_01,event=await,type=bottom
+C 95 27.08 27.28 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w1_s1,frag=1
+C 96 26.6383 27.305 9 0.25; name=Transport,pid=2,type=top,traj=tr_s3_p5,frag=1
+E 13 27.305; name=sensor_05,event=pass,type=top
+C 97 27.305 27.335 2 1; name=Enable,pid=2,resource=Stopper_4
+C 98 27.28 27.5133 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s1_w2,frag=1
+E 14 27.5133; name=sensor_02,event=await,type=bottom
+C 99 27.5133 27.5667 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w2_s2,frag=1
+C 100 26.71 27.61 15 1; name=MoveAtTop,pid=3
+C 101 27.61 27.81 15 1; name=Grab,pid=3
+C 102 21.6983 28.6153 11 1; name=Assemble,pid=1
+C 103 27.305 28.6383 9 0.25; name=Transport,pid=2,type=top,traj=tr_p5_b3,frag=1
+C 104 27.81 28.71 15 1; name=MoveAboveTop,pid=3
+C 105 28.6153 29.1753 16 1; name=AlignBelt,pid=1
+C 106 27.5667 29.3133 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s2_w4,frag=1
+E 15 29.3133; name=sensor_04,event=await,type=bottom
+C 107 29.3133 29.3467 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_w4_s3,frag=1
+C 108 29.1753 29.7353 16 1; name=AlignPandP,pid=1
+C 109 28.6383 29.9517 5 0.25; name=Transport,pid=2,type=top,traj=tr_b3_s4,frag=1
+E 16 29.9517; name=sensor_08,event=await,type=top
+C 110 28.71 29.96 15 1; name=MoveBeforeBelt1,pid=3
+C 111 29.3467 30.0133 9 0.25; name=Transport,pid=2,type=bottom,traj=tr_s3_p5,frag=1
+E 17 30.0133; name=sensor_05,event=pass,type=bottom
+C 112 30.0133 30.0433 17 1; name=Enable,pid=2,resource=Stopper_3
+C 113 29.7353 30.2953 16 1; name=AlignBelt,pid=1
+C 114 30.2953 30.5753 10 1; name=Enable,pid=1
+C 115 29.96 30.66 15 1; name=MoveAtBelt1,pid=3
+C 116 30.5753 30.6653 10 1; name=Disable,pid=1
+C 117 30.66 30.86 15 1; name=Ungrab,pid=3
+C 118 30.6653 31.4553 8 1; name=Enable,pid=2
+C 119 30.86 31.56 15 1; name=MoveBeforeBelt1,pid=3
+C 120 31.4553 32.2453 8 1; name=Disable,pid=2
+C 121 31.56 32.4993 15 1; name=MoveAboveBottom,pid=3
+C 122 32.2453 32.8053 16 1; name=AlignPandP,pid=2
+C 123 30.86 33.1267 0 0.25; name=Transport,pid=3,type=top,traj=tr_ungrab_s5,frag=1
+C 124 33.1267 33.18 9 0.25; name=Transport,pid=3,type=top,traj=tr_s5_w1,frag=1
+E 18 33.18; name=sensor_01,event=await,type=top
+C 125 32.8053 33.3653 16 1; name=AlignBelt,pid=2
+C 126 30.6653 33.372 3 0.25; name=Transport,pid=1,type=product,traj=tr_sw3_b5,frag=1
+C 127 33.18 33.38 9 0.25; name=Transport,pid=3,type=top,traj=tr_w1_s1,frag=1
+C 128 32.4993 33.3993 15 1; name=MoveAtBottom,pid=3
+C 129 33.3993 33.5993 15 1; name=Grab,pid=3
+C 130 33.38 33.6133 9 0.25; name=Transport,pid=3,type=top,traj=tr_s1_w2,frag=1
+E 19 33.6133; name=sensor_02,event=await,type=top
+C 131 33.6133 33.6433 13 1; name=Enable,pid=3,resource=Stopper_2
+C 132 33.6133 33.6433 7 1; name=Enable,pid=3,resource=Stopper_1
+C 133 33.6133 33.6667 9 0.25; name=Transport,pid=3,type=top,traj=tr_w2_s2,frag=1
+C 134 33.3653 33.9253 16 1; name=AlignPandP,pid=2
+C 135 33.9253 33.9553 17 1; name=Disable,pid=2,resource=Stopper_3
+C 136 33.6133 34.1133 12 1; name=Down,pid=3
+C 137 34.1133 34.1633 12 1; name=Grab,pid=3
+C 138 33.5993 34.4993 15 1; name=MoveAboveBottom,pid=3
+C 139 34.1633 34.6633 12 1; name=Up,pid=3
+C 140 34.6633 35.0133 12 1; name=Flip_left,pid=3
+C 141 33.372 35.412 4 0.25; name=Transport,pid=1,type=product,traj=tr_b5_p20,frag=1
+E 20 35.412; name=sensor_20,event=pass,type=product
+C 142 34.4993 35.4386 15 1; name=MoveBeforeBelt1,pid=3
+C 143 35.0133 35.5133 12 1; name=Down,pid=3
+C 144 35.5133 35.5533 12 1; name=Ungrab,pid=3
+C 145 35.412 35.612 6 1; name=Grab,pid=1
+C 146 35.5533 36.0533 12 1; name=Up,pid=3
+C 147 35.4386 36.1386 15 1; name=MoveAtBelt1,pid=3
+C 148 36.1386 36.3386 15 1; name=Ungrab,pid=3
+C 149 36.0533 36.4033 12 1; name=Flip_right,pid=3
+C 150 36.4033 36.4333 7 1; name=Disable,pid=3,resource=Stopper_1
+C 151 36.4033 36.4333 13 1; name=Disable,pid=3,resource=Stopper_2
+C 152 36.3386 37.0386 15 1; name=MoveBeforeBelt1,pid=4
+C 153 35.612 37.362 6 1; name=MoveBeforeBelt5,pid=1
+C 154 36.4333 38.18 9 0.25; name=Transport,pid=3,type=top,traj=tr_s2_w4,frag=1
+E 21 38.18; name=sensor_04,event=await,type=top
+C 155 38.18 38.2133 9 0.25; name=Transport,pid=3,type=top,traj=tr_w4_s3,frag=1
+C 156 37.0386 38.2886 15 1; name=MoveAboveTop,pid=4
+C 157 36.3386 38.6052 0 0.25; name=Transport,pid=3,type=bottom,traj=tr_ungrab_s5,frag=1
+C 158 38.6052 38.6586 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s5_w1,frag=1
+E 22 38.6586; name=sensor_01,event=await,type=bottom
+C 159 38.6586 38.8586 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w1_s1,frag=1
+C 160 38.2133 38.88 9 0.25; name=Transport,pid=3,type=top,traj=tr_s3_p5,frag=1
+E 23 38.88; name=sensor_05,event=pass,type=top
+C 161 38.88 38.91 2 1; name=Enable,pid=3,resource=Stopper_4
+C 162 38.8586 39.0919 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s1_w2,frag=1
+E 24 39.0919; name=sensor_02,event=await,type=bottom
+C 163 39.0919 39.1452 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w2_s2,frag=1
+C 164 38.2886 39.1886 15 1; name=MoveAtTop,pid=4
+C 165 39.1886 39.3886 15 1; name=Grab,pid=4
+C 166 38.88 40.2133 9 0.25; name=Transport,pid=3,type=top,traj=tr_p5_b3,frag=1
+C 167 39.3886 40.2886 15 1; name=MoveAboveTop,pid=4
+C 168 33.9253 40.8423 11 1; name=Assemble,pid=2
+C 169 39.1452 40.8919 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s2_w4,frag=1
+E 25 40.8919; name=sensor_04,event=await,type=bottom
+C 170 40.8919 40.9252 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_w4_s3,frag=1
+C 171 40.2886 41.1171 6 1; name=MoveAboveProduct,pid=1
+C 172 40.8423 41.4023 16 1; name=AlignBelt,pid=2
+C 173 40.2133 41.5267 5 0.25; name=Transport,pid=3,type=top,traj=tr_b3_s4,frag=1
+E 26 41.5267; name=sensor_08,event=await,type=top
+C 174 40.2886 41.5386 15 1; name=MoveBeforeBelt1,pid=4
+C 175 40.9252 41.5919 9 0.25; name=Transport,pid=3,type=bottom,traj=tr_s3_p5,frag=1
+E 27 41.5919; name=sensor_05,event=pass,type=bottom
+C 176 41.5919 41.6219 17 1; name=Enable,pid=3,resource=Stopper_3
+C 177 41.4023 41.9623 16 1; name=AlignPandP,pid=2
+C 178 41.1171 42.0171 6 1; name=MoveAtProduct,pid=1
+C 179 42.0171 42.2171 6 1; name=Ungrab,pid=1
+C 180 41.5386 42.2386 15 1; name=MoveAtBelt1,pid=4
+C 181 42.2386 42.4386 15 1; name=Ungrab,pid=4
+C 182 41.9623 42.5223 16 1; name=AlignBelt,pid=2
+C 183 42.5223 42.8023 10 1; name=Enable,pid=2
+C 184 42.8023 42.8923 10 1; name=Disable,pid=2
+C 185 42.2171 43.1171 6 1; name=MoveAboveProduct,pid=1
+C 186 42.4386 43.1386 15 1; name=MoveBeforeBelt1,pid=4
+C 187 42.8923 43.6823 8 1; name=Enable,pid=3
+C 188 43.1171 43.9457 6 1; name=MoveBeforeBelt5,pid=1
+C 189 43.1386 44.2564 15 1; name=MoveAboveBottom,pid=4
+C 190 43.6823 44.4723 8 1; name=Disable,pid=3
+C 191 42.4386 44.7052 0 0.25; name=Transport,pid=4,type=top,traj=tr_ungrab_s5,frag=1
+C 192 44.7052 44.7586 9 0.25; name=Transport,pid=4,type=top,traj=tr_s5_w1,frag=1
+E 28 44.7586; name=sensor_01,event=await,type=top
+C 193 44.7586 44.9586 9 0.25; name=Transport,pid=4,type=top,traj=tr_w1_s1,frag=1
+C 194 44.4723 45.0323 16 1; name=AlignPandP,pid=3
+C 195 43.9457 45.0395 6 1; name=MoveAtBelt5,pid=1
+C 196 44.2564 45.1564 15 1; name=MoveAtBottom,pid=4
+C 197 44.9586 45.1919 9 0.25; name=Transport,pid=4,type=top,traj=tr_s1_w2,frag=1
+E 29 45.1919; name=sensor_02,event=await,type=top
+C 198 45.1919 45.2219 13 1; name=Enable,pid=4,resource=Stopper_2
+C 199 45.1919 45.2219 7 1; name=Enable,pid=4,resource=Stopper_1
+C 200 45.1919 45.2452 9 0.25; name=Transport,pid=4,type=top,traj=tr_w2_s2,frag=1
+C 201 45.1564 45.3564 15 1; name=Grab,pid=4
+C 202 45.0323 45.5923 16 1; name=AlignBelt,pid=3
+C 203 42.8923 45.599 3 0.25; name=Transport,pid=2,type=product,traj=tr_sw3_b5,frag=1
+C 204 45.1919 45.6919 12 1; name=Down,pid=4
+C 205 45.6919 45.7419 12 1; name=Grab,pid=4
+C 206 45.5923 46.1523 16 1; name=AlignPandP,pid=3
+C 207 46.1523 46.1823 17 1; name=Disable,pid=3,resource=Stopper_3
+C 208 45.7419 46.2419 12 1; name=Up,pid=4
+C 209 45.3564 46.2564 15 1; name=MoveAboveBottom,pid=4
+C 210 46.2419 46.5919 12 1; name=Flip_left,pid=4
+C 211 46.5919 47.0919 12 1; name=Down,pid=4
+C 212 47.0919 47.1319 12 1; name=Ungrab,pid=4
+C 213 46.2564 47.3743 15 1; name=MoveBeforeBelt1,pid=4
+C 214 47.1319 47.6319 12 1; name=Up,pid=4
+C 215 45.599 47.639 4 0.25; name=Transport,pid=2,type=product,traj=tr_b5_p20,frag=1
+E 30 47.639; name=sensor_20,event=pass,type=product
+C 216 47.639 47.839 6 1; name=Grab,pid=2
+C 217 47.6319 47.9819 12 1; name=Flip_right,pid=4
+C 218 47.9819 48.0119 7 1; name=Disable,pid=4,resource=Stopper_1
+C 219 47.9819 48.0119 13 1; name=Disable,pid=4,resource=Stopper_2
+C 220 47.3743 48.0743 15 1; name=MoveAtBelt1,pid=4
+C 221 48.0743 48.2743 15 1; name=Ungrab,pid=4
+C 222 47.839 48.9328 6 1; name=MoveBeforeBelt5,pid=2
+C 223 48.2743 48.9743 15 1; name=MoveBeforeBelt1,pid=5
+C 224 48.9328 49.5828 6 1; name=MoveAboveProduct,pid=2
+C 225 48.0119 49.7586 9 0.25; name=Transport,pid=4,type=top,traj=tr_s2_w4,frag=1
+E 31 49.7586; name=sensor_04,event=await,type=top
+C 226 49.7586 49.7919 9 0.25; name=Transport,pid=4,type=top,traj=tr_w4_s3,frag=1
+C 227 49.7919 50.4586 9 0.25; name=Transport,pid=4,type=top,traj=tr_s3_p5,frag=1
+E 32 50.4586; name=sensor_05,event=pass,type=top
+C 228 49.5828 50.4828 6 1; name=MoveAtProduct,pid=2
+C 229 50.4586 50.4886 2 1; name=Enable,pid=4,resource=Stopper_4
+C 230 48.2743 50.541 0 0.25; name=Transport,pid=4,type=bottom,traj=tr_ungrab_s5,frag=1
+C 231 50.541 50.5943 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s5_w1,frag=1
+E 33 50.5943; name=sensor_01,event=await,type=bottom
+C 232 50.4828 50.6828 6 1; name=Ungrab,pid=2
+C 233 50.5943 50.7943 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w1_s1,frag=1
+C 234 50.7943 51.0276 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s1_w2,frag=1
+E 34 51.0276; name=sensor_02,event=await,type=bottom
+C 235 51.0276 51.081 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w2_s2,frag=1
+C 236 50.6828 51.5828 6 1; name=MoveAboveProduct,pid=2
+C 237 50.4586 51.7919 9 0.25; name=Transport,pid=4,type=top,traj=tr_p5_b3,frag=1
+C 238 51.5828 52.2328 6 1; name=MoveBeforeBelt5,pid=2
+C 239 51.081 52.8276 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s2_w4,frag=1
+E 35 52.8276; name=sensor_04,event=await,type=bottom
+C 240 52.8276 52.861 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_w4_s3,frag=1
+C 241 51.5828 52.8792 15 1; name=MoveAboveTop,pid=5
+C 242 46.1523 53.0693 11 1; name=Assemble,pid=3
+C 243 51.7919 53.1052 5 0.25; name=Transport,pid=4,type=top,traj=tr_b3_s4,frag=1
+E 36 53.1052; name=sensor_08,event=await,type=top
+C 244 52.2328 53.3265 6 1; name=MoveAtBelt5,pid=2
+C 245 52.861 53.5276 9 0.25; name=Transport,pid=4,type=bottom,traj=tr_s3_p5,frag=1
+E 37 53.5276; name=sensor_05,event=pass,type=bottom
+C 246 53.5276 53.5576 17 1; name=Enable,pid=4,resource=Stopper_3
+C 247 53.0693 53.6293 16 1; name=AlignBelt,pid=3
+C 248 52.8792 53.7792 15 1; name=MoveAtTop,pid=5
+C 249 53.7792 53.9792 15 1; name=Grab,pid=5
+C 250 53.6293 54.1893 16 1; name=AlignPandP,pid=3
+C 251 54.1893 54.7493 16 1; name=AlignBelt,pid=3
+C 252 53.9792 54.8792 15 1; name=MoveAboveTop,pid=5
+C 253 54.7493 55.0293 10 1; name=Enable,pid=3
+C 254 55.0293 55.1193 10 1; name=Disable,pid=3
+C 255 55.1193 55.9093 8 1; name=Enable,pid=4
+C 256 54.8792 56.1756 15 1; name=MoveBeforeBelt1,pid=5
+C 257 55.9093 56.6993 8 1; name=Disable,pid=4
+C 258 56.1756 56.8756 15 1; name=MoveAtBelt1,pid=5
+C 259 56.8756 57.0756 15 1; name=Ungrab,pid=5
+C 260 56.6993 57.2593 16 1; name=AlignPandP,pid=4
+C 261 57.0756 57.7756 15 1; name=MoveBeforeBelt1,pid=5
+C 262 57.2593 57.8193 16 1; name=AlignBelt,pid=4
+C 263 55.1193 57.826 3 0.25; name=Transport,pid=3,type=product,traj=tr_sw3_b5,frag=1
+C 264 57.8193 58.3793 16 1; name=AlignPandP,pid=4
+C 265 58.3793 58.4093 17 1; name=Disable,pid=4,resource=Stopper_3
+C 266 57.7756 59.072 15 1; name=MoveAboveBottom,pid=5
+C 267 57.0756 59.3423 0 0.25; name=Transport,pid=5,type=top,traj=tr_ungrab_s5,frag=1
+C 268 59.3423 59.3956 9 0.25; name=Transport,pid=5,type=top,traj=tr_s5_w1,frag=1
+E 38 59.3956; name=sensor_01,event=await,type=top
+C 269 59.3956 59.5956 9 0.25; name=Transport,pid=5,type=top,traj=tr_w1_s1,frag=1
+C 270 59.5956 59.8289 9 0.25; name=Transport,pid=5,type=top,traj=tr_s1_w2,frag=1
+E 39 59.8289; name=sensor_02,event=await,type=top
+C 271 59.8289 59.8589 13 1; name=Enable,pid=5,resource=Stopper_2
+C 272 59.8289 59.8589 7 1; name=Enable,pid=5,resource=Stopper_1
+C 273 57.826 59.866 4 0.25; name=Transport,pid=3,type=product,traj=tr_b5_p20,frag=1
+E 40 59.866; name=sensor_20,event=pass,type=product
+C 274 59.8289 59.8823 9 0.25; name=Transport,pid=5,type=top,traj=tr_w2_s2,frag=1
+C 275 59.072 59.972 15 1; name=MoveAtBottom,pid=5
+C 276 59.866 60.066 6 1; name=Grab,pid=3
+C 277 59.972 60.172 15 1; name=Grab,pid=5
+C 278 59.8289 60.3289 12 1; name=Down,pid=5
+C 279 60.3289 60.3789 12 1; name=Grab,pid=5
+C 280 60.3789 60.8789 12 1; name=Up,pid=5
+C 281 60.172 61.072 15 1; name=MoveAboveBottom,pid=5
+C 282 60.066 61.1598 6 1; name=MoveBeforeBelt5,pid=3
+C 283 60.8789 61.2289 12 1; name=Flip_left,pid=5
+C 284 61.1598 61.6312 6 1; name=MoveAboveProduct,pid=3
+C 285 61.2289 61.7289 12 1; name=Down,pid=5
+C 286 61.7289 61.7689 12 1; name=Ungrab,pid=5
+C 287 61.7689 62.2689 12 1; name=Up,pid=5
+C 288 61.072 62.3685 15 1; name=MoveBeforeBelt1,pid=5
+C 289 61.6312 62.5312 6 1; name=MoveAtProduct,pid=3
+C 290 62.2689 62.6189 12 1; name=Flip_right,pid=5
+C 291 62.6189 62.6489 13 1; name=Disable,pid=5,resource=Stopper_2
+C 292 62.6189 62.6489 7 1; name=Disable,pid=5,resource=Stopper_1
+C 293 62.5312 62.7312 6 1; name=Ungrab,pid=3
+C 294 62.3685 63.0685 15 1; name=MoveAtBelt1,pid=5
+C 295 63.0685 63.2685 15 1; name=Ungrab,pid=5
+C 296 62.7312 63.6312 6 1; name=MoveAboveProduct,pid=3
+C 297 63.2685 63.9685 15 1; name=MoveBeforeBelt1,pid=6
+C 298 63.6312 64.1026 6 1; name=MoveBeforeBelt5,pid=3
+C 299 62.6489 64.3956 9 0.25; name=Transport,pid=5,type=top,traj=tr_s2_w4,frag=1
+E 41 64.3956; name=sensor_04,event=await,type=top
+C 300 64.3956 64.4289 9 0.25; name=Transport,pid=5,type=top,traj=tr_w4_s3,frag=1
+C 301 63.9685 64.5935 15 1; name=MoveAboveTop,pid=6
+C 302 64.4289 65.0956 9 0.25; name=Transport,pid=5,type=top,traj=tr_s3_p5,frag=1
+E 42 65.0956; name=sensor_05,event=pass,type=top
+C 303 65.0956 65.1256 2 1; name=Enable,pid=5,resource=Stopper_4
+C 304 64.1026 65.1964 6 1; name=MoveAtBelt5,pid=3
+C 305 58.3793 65.2963 11 1; name=Assemble,pid=4
+C 306 64.5935 65.4935 15 1; name=MoveAtTop,pid=6
+C 307 63.2685 65.5351 0 0.25; name=Transport,pid=5,type=bottom,traj=tr_ungrab_s5,frag=1
+C 308 65.5351 65.5885 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s5_w1,frag=1
+E 43 65.5885; name=sensor_01,event=await,type=bottom
+C 309 65.4935 65.6935 15 1; name=Grab,pid=6
+C 310 65.5885 65.7885 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w1_s1,frag=1
+C 311 65.2963 65.8563 16 1; name=AlignBelt,pid=4
+C 312 65.7885 66.0218 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s1_w2,frag=1
+E 44 66.0218; name=sensor_02,event=await,type=bottom
+C 313 66.0218 66.0751 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w2_s2,frag=1
+C 314 65.8563 66.4163 16 1; name=AlignPandP,pid=4
+C 315 65.0956 66.4289 9 0.25; name=Transport,pid=5,type=top,traj=tr_p5_b3,frag=1
+C 316 65.6935 66.5935 15 1; name=MoveAboveTop,pid=6
+C 317 66.4163 66.9763 16 1; name=AlignBelt,pid=4
+C 318 66.5935 67.2185 15 1; name=MoveBeforeBelt1,pid=6
+C 319 66.9763 67.2563 10 1; name=Enable,pid=4
+C 320 67.2563 67.3463 10 1; name=Disable,pid=4
+C 321 66.4289 67.7423 5 0.25; name=Transport,pid=5,type=top,traj=tr_b3_s4,frag=1
+E 45 67.7423; name=sensor_08,event=await,type=top
+C 322 66.0751 67.8218 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s2_w4,frag=1
+E 46 67.8218; name=sensor_04,event=await,type=bottom
+C 323 67.8218 67.8551 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_w4_s3,frag=1
+C 324 67.2185 67.9185 15 1; name=MoveAtBelt1,pid=6
+C 325 67.9185 68.1185 15 1; name=Ungrab,pid=6
+C 326 67.8551 68.5218 9 0.25; name=Transport,pid=5,type=bottom,traj=tr_s3_p5,frag=1
+E 47 68.5218; name=sensor_05,event=pass,type=bottom
+C 327 68.5218 68.5518 17 1; name=Enable,pid=5,resource=Stopper_3
+C 328 68.1185 68.8185 15 1; name=MoveBeforeBelt1,pid=6
+C 329 68.5218 69.3118 8 1; name=Enable,pid=5
+C 330 68.8185 69.4006 15 1; name=MoveAboveBottom,pid=6
+C 331 67.3463 70.053 3 0.25; name=Transport,pid=4,type=product,traj=tr_sw3_b5,frag=1
+C 332 69.3118 70.1018 8 1; name=Disable,pid=5
+C 333 69.4006 70.3006 15 1; name=MoveAtBottom,pid=6
+C 334 68.1185 70.3851 0 0.25; name=Transport,pid=6,type=top,traj=tr_ungrab_s5,frag=1
+C 335 70.3851 70.4385 9 0.25; name=Transport,pid=6,type=top,traj=tr_s5_w1,frag=1
+E 48 70.4385; name=sensor_01,event=await,type=top
+C 336 70.3006 70.5006 15 1; name=Grab,pid=6
+C 337 70.4385 70.6385 9 0.25; name=Transport,pid=6,type=top,traj=tr_w1_s1,frag=1
+C 338 70.1018 70.6618 16 1; name=AlignPandP,pid=5
+C 339 70.6385 70.8718 9 0.25; name=Transport,pid=6,type=top,traj=tr_s1_w2,frag=1
+E 49 70.8718; name=sensor_02,event=await,type=top
+C 340 70.8718 70.9018 7 1; name=Enable,pid=6,resource=Stopper_1
+C 341 70.8718 70.9018 13 1; name=Enable,pid=6,resource=Stopper_2
+C 342 70.8718 70.9251 9 0.25; name=Transport,pid=6,type=top,traj=tr_w2_s2,frag=1
+C 343 70.6618 71.2218 16 1; name=AlignBelt,pid=5
+C 344 70.8718 71.3718 12 1; name=Down,pid=6
+C 345 70.5006 71.4006 15 1; name=MoveAboveBottom,pid=6
+C 346 71.3718 71.4218 12 1; name=Grab,pid=6
+C 347 71.2218 71.7818 16 1; name=AlignPandP,pid=5
+C 348 71.7818 71.8118 17 1; name=Disable,pid=5,resource=Stopper_3
+C 349 71.4218 71.9218 12 1; name=Up,pid=6
+C 350 71.4006 71.9828 15 1; name=MoveBeforeBelt1,pid=6
+C 351 70.053 72.093 4 0.25; name=Transport,pid=4,type=product,traj=tr_b5_p20,frag=1
+E 50 72.093; name=sensor_20,event=pass,type=product
+C 352 71.9218 72.2718 12 1; name=Flip_left,pid=6
+C 353 72.093 72.293 6 1; name=Grab,pid=4
+C 354 71.9828 72.6828 15 1; name=MoveAtBelt1,pid=6
+C 355 72.2718 72.7718 12 1; name=Down,pid=6
+C 356 72.7718 72.8118 12 1; name=Ungrab,pid=6
+C 357 72.6828 72.8828 15 1; name=Ungrab,pid=6
+C 358 72.8118 73.3118 12 1; name=Up,pid=6
+C 359 72.293 73.3868 6 1; name=MoveBeforeBelt5,pid=4
+C 360 72.8828 73.5828 15 1; name=MoveBeforeBelt1,pid=7
+C 361 73.3118 73.6618 12 1; name=Flip_right,pid=6
+C 362 73.3868 73.6796 6 1; name=MoveAboveProduct,pid=4
+C 363 73.6618 73.6918 7 1; name=Disable,pid=6,resource=Stopper_1
+C 364 73.6618 73.6918 13 1; name=Disable,pid=6,resource=Stopper_2
+C 365 73.6796 74.5796 6 1; name=MoveAtProduct,pid=4
+C 366 74.5796 74.7796 6 1; name=Ungrab,pid=4
+C 367 72.8828 75.1494 0 0.25; name=Transport,pid=6,type=bottom,traj=tr_ungrab_s5,frag=1
+C 368 75.1494 75.2028 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s5_w1,frag=1
+E 51 75.2028; name=sensor_01,event=await,type=bottom
+C 369 75.2028 75.4028 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w1_s1,frag=1
+C 370 73.6918 75.4385 9 0.25; name=Transport,pid=6,type=top,traj=tr_s2_w4,frag=1
+E 52 75.4385; name=sensor_04,event=await,type=top
+C 371 75.4385 75.4718 9 0.25; name=Transport,pid=6,type=top,traj=tr_w4_s3,frag=1
+C 372 75.4028 75.6361 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s1_w2,frag=1
+E 53 75.6361; name=sensor_02,event=await,type=bottom
+C 373 74.7796 75.6796 6 1; name=MoveAboveProduct,pid=4
+C 374 75.6361 75.6894 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w2_s2,frag=1
+C 375 75.6796 75.9725 6 1; name=MoveBeforeBelt5,pid=4
+C 376 75.4718 76.1385 9 0.25; name=Transport,pid=6,type=top,traj=tr_s3_p5,frag=1
+E 54 76.1385; name=sensor_05,event=pass,type=top
+C 377 76.1385 76.1685 2 1; name=Enable,pid=6,resource=Stopper_4
+C 378 75.6796 76.4403 15 1; name=MoveAboveTop,pid=7
+C 379 75.9725 77.0662 6 1; name=MoveAtBelt5,pid=4
+C 380 76.4403 77.3403 15 1; name=MoveAtTop,pid=7
+C 381 75.6894 77.4361 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s2_w4,frag=1
+E 55 77.4361; name=sensor_04,event=await,type=bottom
+C 382 77.4361 77.4694 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_w4_s3,frag=1
+C 383 76.1385 77.4718 9 0.25; name=Transport,pid=6,type=top,traj=tr_p5_b3,frag=1
+C 384 77.3403 77.5403 15 1; name=Grab,pid=7
+C 385 77.4694 78.1361 9 0.25; name=Transport,pid=6,type=bottom,traj=tr_s3_p5,frag=1
+E 56 78.1361; name=sensor_05,event=pass,type=bottom
+C 386 78.1361 78.1661 17 1; name=Enable,pid=6,resource=Stopper_3
+C 387 77.5403 78.4403 15 1; name=MoveAboveTop,pid=7
+C 388 71.7818 78.6988 11 1; name=Assemble,pid=5
+C 389 77.4718 78.7851 5 0.25; name=Transport,pid=6,type=top,traj=tr_b3_s4,frag=1
+E 57 78.7851; name=sensor_08,event=await,type=top
+C 390 78.4403 79.201 15 1; name=MoveBeforeBelt1,pid=7
+C 391 78.6988 79.2588 16 1; name=AlignBelt,pid=5
+C 392 79.2588 79.8188 16 1; name=AlignPandP,pid=5
+C 393 79.201 79.901 15 1; name=MoveAtBelt1,pid=7
+C 394 79.901 80.101 15 1; name=Ungrab,pid=7
+C 395 79.8188 80.3788 16 1; name=AlignBelt,pid=5
+C 396 80.3788 80.6588 10 1; name=Enable,pid=5
+C 397 80.6588 80.7488 10 1; name=Disable,pid=5
+C 398 80.101 80.801 15 1; name=MoveBeforeBelt1,pid=7
+C 399 80.7488 81.5388 8 1; name=Enable,pid=6
+C 400 80.801 81.5618 15 1; name=MoveAboveBottom,pid=7
+C 401 81.5388 82.3288 8 1; name=Disable,pid=6
+C 402 80.101 82.3677 0 0.25; name=Transport,pid=7,type=top,traj=tr_ungrab_s5,frag=1
+C 403 82.3677 82.421 9 0.25; name=Transport,pid=7,type=top,traj=tr_s5_w1,frag=1
+E 58 82.421; name=sensor_01,event=await,type=top
+C 404 81.5618 82.4618 15 1; name=MoveAtBottom,pid=7
+C 405 82.421 82.621 9 0.25; name=Transport,pid=7,type=top,traj=tr_w1_s1,frag=1
+C 406 82.4618 82.6618 15 1; name=Grab,pid=7
+C 407 82.621 82.8544 9 0.25; name=Transport,pid=7,type=top,traj=tr_s1_w2,frag=1
+E 59 82.8544; name=sensor_02,event=await,type=top
+C 408 82.8544 82.8844 13 1; name=Enable,pid=7,resource=Stopper_2
+C 409 82.8544 82.8844 7 1; name=Enable,pid=7,resource=Stopper_1
+C 410 82.3288 82.8888 16 1; name=AlignPandP,pid=6
+C 411 82.8544 82.9077 9 0.25; name=Transport,pid=7,type=top,traj=tr_w2_s2,frag=1
+C 412 82.8544 83.3544 12 1; name=Down,pid=7
+C 413 83.3544 83.4044 12 1; name=Grab,pid=7
+C 414 82.8888 83.4488 16 1; name=AlignBelt,pid=6
+C 415 80.7488 83.4555 3 0.25; name=Transport,pid=5,type=product,traj=tr_sw3_b5,frag=1
+C 416 82.6618 83.5618 15 1; name=MoveAboveBottom,pid=7
+C 417 83.4044 83.9044 12 1; name=Up,pid=7
+C 418 83.4488 84.0088 16 1; name=AlignPandP,pid=6
+C 419 84.0088 84.0388 17 1; name=Disable,pid=6,resource=Stopper_3
+C 420 83.9044 84.2544 12 1; name=Flip_left,pid=7
+C 421 83.5618 84.3225 15 1; name=MoveBeforeBelt1,pid=7
+C 422 84.2544 84.7544 12 1; name=Down,pid=7
+C 423 84.7544 84.7944 12 1; name=Ungrab,pid=7
+C 424 84.3225 85.0225 15 1; name=MoveAtBelt1,pid=7
+C 425 85.0225 85.2225 15 1; name=Ungrab,pid=7
+C 426 84.7944 85.2944 12 1; name=Up,pid=7
+C 427 83.4555 85.4955 4 0.25; name=Transport,pid=5,type=product,traj=tr_b5_p20,frag=1
+E 60 85.4955; name=sensor_20,event=pass,type=product
+C 428 85.2944 85.6444 12 1; name=Flip_right,pid=7
+C 429 85.6444 85.6744 7 1; name=Disable,pid=7,resource=Stopper_1
+C 430 85.6444 85.6744 13 1; name=Disable,pid=7,resource=Stopper_2
+C 431 85.4955 85.6955 6 1; name=Grab,pid=5
+C 432 85.2225 85.9225 15 1; name=MoveBeforeBelt1,pid=8
+C 433 85.6955 86.7892 6 1; name=MoveBeforeBelt5,pid=5
+C 434 85.9225 86.8618 15 1; name=MoveAboveTop,pid=8
+C 435 85.6744 87.421 9 0.25; name=Transport,pid=7,type=top,traj=tr_s2_w4,frag=1
+E 61 87.421; name=sensor_04,event=await,type=top
+C 436 87.421 87.4544 9 0.25; name=Transport,pid=7,type=top,traj=tr_w4_s3,frag=1
+C 437 85.2225 87.4891 0 0.25; name=Transport,pid=7,type=bottom,traj=tr_ungrab_s5,frag=1
+C 438 87.4891 87.5425 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s5_w1,frag=1
+E 62 87.5425; name=sensor_01,event=await,type=bottom
+C 439 87.5425 87.7425 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w1_s1,frag=1
+C 440 86.8618 87.7618 15 1; name=MoveAtTop,pid=8
+C 441 87.7618 87.9618 15 1; name=Grab,pid=8
+C 442 87.7425 87.9758 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s1_w2,frag=1
+E 63 87.9758; name=sensor_02,event=await,type=bottom
+C 443 87.9758 88.0291 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w2_s2,frag=1
+C 444 87.4544 88.121 9 0.25; name=Transport,pid=7,type=top,traj=tr_s3_p5,frag=1
+E 64 88.121; name=sensor_05,event=pass,type=top
+C 445 88.121 88.151 2 1; name=Enable,pid=7,resource=Stopper_4
+C 446 87.9618 88.8618 15 1; name=MoveAboveTop,pid=8
+C 447 88.8618 88.976 6 1; name=MoveAboveProduct,pid=5
+C 448 88.121 89.4544 9 0.25; name=Transport,pid=7,type=top,traj=tr_p5_b3,frag=1
+C 449 88.0291 89.7758 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s2_w4,frag=1
+E 65 89.7758; name=sensor_04,event=await,type=bottom
+C 450 88.8618 89.801 15 1; name=MoveBeforeBelt1,pid=8
+C 451 89.7758 89.8091 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_w4_s3,frag=1
+C 452 88.976 89.876 6 1; name=MoveAtProduct,pid=5
+C 453 89.876 90.076 6 1; name=Ungrab,pid=5
+C 454 89.8091 90.4758 9 0.25; name=Transport,pid=7,type=bottom,traj=tr_s3_p5,frag=1
+E 66 90.4758; name=sensor_05,event=pass,type=bottom
+C 455 89.801 90.501 15 1; name=MoveAtBelt1,pid=8
+C 456 90.4758 90.5058 17 1; name=Enable,pid=7,resource=Stopper_3
+C 457 90.501 90.701 15 1; name=Ungrab,pid=8
+C 458 89.4544 90.7677 5 0.25; name=Transport,pid=7,type=top,traj=tr_b3_s4,frag=1
+E 67 90.7677; name=sensor_08,event=await,type=top
+C 459 84.0088 90.9258 11 1; name=Assemble,pid=6
+C 460 90.076 90.976 6 1; name=MoveAboveProduct,pid=5
+C 461 90.976 91.0903 6 1; name=MoveBeforeBelt5,pid=5
+C 462 90.701 91.401 15 1; name=MoveBeforeBelt1,pid=8
+C 463 90.9258 91.4858 16 1; name=AlignBelt,pid=6
+C 464 91.4858 92.0458 16 1; name=AlignPandP,pid=6
+C 465 91.0903 92.1841 6 1; name=MoveAtBelt5,pid=5
+C 466 91.401 92.3403 15 1; name=MoveAboveBottom,pid=8
+C 467 92.0458 92.6058 16 1; name=AlignBelt,pid=6
+C 468 92.6058 92.8858 10 1; name=Enable,pid=6
+C 469 90.701 92.9677 0 0.25; name=Transport,pid=8,type=top,traj=tr_ungrab_s5,frag=1
+C 470 92.8858 92.9758 10 1; name=Disable,pid=6
+C 471 92.9677 93.021 9 0.25; name=Transport,pid=8,type=top,traj=tr_s5_w1,frag=1
+E 68 93.021; name=sensor_01,event=await,type=top
+C 472 93.021 93.221 9 0.25; name=Transport,pid=8,type=top,traj=tr_w1_s1,frag=1
+C 473 92.3403 93.2403 15 1; name=MoveAtBottom,pid=8
+C 474 93.2403 93.4403 15 1; name=Grab,pid=8
+C 475 93.221 93.4544 9 0.25; name=Transport,pid=8,type=top,traj=tr_s1_w2,frag=1
+E 69 93.4544; name=sensor_02,event=await,type=top
+C 476 93.4544 93.4844 7 1; name=Enable,pid=8,resource=Stopper_1
+C 477 93.4544 93.4844 13 1; name=Enable,pid=8,resource=Stopper_2
+C 478 93.4544 93.5077 9 0.25; name=Transport,pid=8,type=top,traj=tr_w2_s2,frag=1
+C 479 92.9758 93.7658 8 1; name=Enable,pid=7
+C 480 93.4544 93.9544 12 1; name=Down,pid=8
+C 481 93.9544 94.0044 12 1; name=Grab,pid=8
+C 482 93.4403 94.3403 15 1; name=MoveAboveBottom,pid=8
+C 483 94.0044 94.5044 12 1; name=Up,pid=8
+C 484 93.7658 94.5558 8 1; name=Disable,pid=7
+C 485 94.5044 94.8544 12 1; name=Flip_left,pid=8
+C 486 94.5558 95.1158 16 1; name=AlignPandP,pid=7
+C 487 94.3403 95.2796 15 1; name=MoveBeforeBelt1,pid=8
+C 488 94.8544 95.3544 12 1; name=Down,pid=8
+C 489 95.3544 95.3944 12 1; name=Ungrab,pid=8
+C 490 95.1158 95.6758 16 1; name=AlignBelt,pid=7
+C 491 92.9758 95.6825 3 0.25; name=Transport,pid=6,type=product,traj=tr_sw3_b5,frag=1
+C 492 95.3944 95.8944 12 1; name=Up,pid=8
+C 493 95.2796 95.9796 15 1; name=MoveAtBelt1,pid=8
+C 494 95.9796 96.1796 15 1; name=Ungrab,pid=8
+C 495 95.6758 96.2358 16 1; name=AlignPandP,pid=7
+C 496 95.8944 96.2444 12 1; name=Flip_right,pid=8
+C 497 96.2358 96.2658 17 1; name=Disable,pid=7,resource=Stopper_3
+C 498 96.2444 96.2744 7 1; name=Disable,pid=8,resource=Stopper_1
+C 499 96.2444 96.2744 13 1; name=Disable,pid=8,resource=Stopper_2
+C 500 96.1796 96.8796 15 1; name=MoveBeforeBelt1,pid=9
+C 501 95.6825 97.7225 4 0.25; name=Transport,pid=6,type=product,traj=tr_b5_p20,frag=1
+E 70 97.7225; name=sensor_20,event=pass,type=product
+C 502 97.7225 97.9225 6 1; name=Grab,pid=6
+C 503 96.8796 97.9975 15 1; name=MoveAboveTop,pid=9
+C 504 96.2744 98.021 9 0.25; name=Transport,pid=8,type=top,traj=tr_s2_w4,frag=1
+E 71 98.021; name=sensor_04,event=await,type=top
+C 505 98.021 98.0544 9 0.25; name=Transport,pid=8,type=top,traj=tr_w4_s3,frag=1
+C 506 96.1796 98.4463 0 0.25; name=Transport,pid=8,type=bottom,traj=tr_ungrab_s5,frag=1
+C 507 98.4463 98.4996 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s5_w1,frag=1
+E 72 98.4996; name=sensor_01,event=await,type=bottom
+C 508 98.4996 98.6996 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w1_s1,frag=1
+C 509 98.0544 98.721 9 0.25; name=Transport,pid=8,type=top,traj=tr_s3_p5,frag=1
+E 73 98.721; name=sensor_05,event=pass,type=top
+C 510 98.721 98.751 2 1; name=Enable,pid=8,resource=Stopper_4
+C 511 97.9975 98.8975 15 1; name=MoveAtTop,pid=9
+C 512 98.6996 98.9329 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s1_w2,frag=1
+E 74 98.9329; name=sensor_02,event=await,type=bottom
+C 513 98.9329 98.9863 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w2_s2,frag=1
+C 514 97.9225 99.0162 6 1; name=MoveBeforeBelt5,pid=6
+C 515 98.8975 99.0975 15 1; name=Grab,pid=9
+C 516 99.0975 99.9975 15 1; name=MoveAboveTop,pid=9
+C 517 98.721 100.054 9 0.25; name=Transport,pid=8,type=top,traj=tr_p5_b3,frag=1
+C 518 98.9863 100.733 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s2_w4,frag=1
+E 75 100.733; name=sensor_04,event=await,type=bottom
+C 519 100.733 100.766 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_w4_s3,frag=1
+C 520 99.9975 100.826 6 1; name=MoveAboveProduct,pid=6
+C 521 99.9975 101.115 15 1; name=MoveBeforeBelt1,pid=9
+C 522 100.054 101.368 5 0.25; name=Transport,pid=8,type=top,traj=tr_b3_s4,frag=1
+E 76 101.368; name=sensor_08,event=await,type=top
+C 523 100.766 101.433 9 0.25; name=Transport,pid=8,type=bottom,traj=tr_s3_p5,frag=1
+E 77 101.433; name=sensor_05,event=pass,type=bottom
+C 524 101.433 101.463 17 1; name=Enable,pid=8,resource=Stopper_3
+C 525 100.826 101.726 6 1; name=MoveAtProduct,pid=6
+C 526 101.115 101.815 15 1; name=MoveAtBelt1,pid=9
+C 527 101.726 101.926 6 1; name=Ungrab,pid=6
+C 528 101.815 102.015 15 1; name=Ungrab,pid=9
+C 529 102.015 102.715 15 1; name=MoveBeforeBelt1,pid=9
+C 530 101.926 102.826 6 1; name=MoveAboveProduct,pid=6
+C 531 96.2358 103.153 11 1; name=Assemble,pid=7
+C 532 102.826 103.655 6 1; name=MoveBeforeBelt5,pid=6
+C 533 103.153 103.713 16 1; name=AlignBelt,pid=7
+C 534 102.826 103.944 15 1; name=MoveAboveBottom,pid=9
+C 535 103.713 104.273 16 1; name=AlignPandP,pid=7
+C 536 102.015 104.282 0 0.25; name=Transport,pid=9,type=top,traj=tr_ungrab_s5,frag=1
+C 537 104.282 104.335 9 0.25; name=Transport,pid=9,type=top,traj=tr_s5_w1,frag=1
+E 78 104.335; name=sensor_01,event=await,type=top
+C 538 104.335 104.535 9 0.25; name=Transport,pid=9,type=top,traj=tr_w1_s1,frag=1
+C 539 103.655 104.748 6 1; name=MoveAtBelt5,pid=6
+C 540 104.535 104.769 9 0.25; name=Transport,pid=9,type=top,traj=tr_s1_w2,frag=1
+E 79 104.769; name=sensor_02,event=await,type=top
+C 541 104.769 104.799 7 1; name=Enable,pid=9,resource=Stopper_1
+C 542 104.769 104.799 13 1; name=Enable,pid=9,resource=Stopper_2
+C 543 104.769 104.822 9 0.25; name=Transport,pid=9,type=top,traj=tr_w2_s2,frag=1
+C 544 104.273 104.833 16 1; name=AlignBelt,pid=7
+C 545 103.944 104.844 15 1; name=MoveAtBottom,pid=9
+C 546 104.844 105.044 15 1; name=Grab,pid=9
+C 547 104.833 105.113 10 1; name=Enable,pid=7
+C 548 105.113 105.203 10 1; name=Disable,pid=7
+C 549 104.769 105.269 12 1; name=Down,pid=9
+C 550 105.269 105.319 12 1; name=Grab,pid=9
+C 551 105.319 105.819 12 1; name=Up,pid=9
+C 552 105.044 105.944 15 1; name=MoveAboveBottom,pid=9
+C 553 105.203 105.993 8 1; name=Enable,pid=8
+C 554 105.819 106.169 12 1; name=Flip_left,pid=9
+C 555 106.169 106.669 12 1; name=Down,pid=9
+C 556 106.669 106.709 12 1; name=Ungrab,pid=9
+C 557 105.993 106.783 8 1; name=Disable,pid=8
+C 558 105.944 107.062 15 1; name=MoveBeforeBelt1,pid=9
+C 559 106.709 107.209 12 1; name=Up,pid=9
+C 560 106.783 107.343 16 1; name=AlignPandP,pid=8
+C 561 107.209 107.559 12 1; name=Flip_right,pid=9
+C 562 107.559 107.589 13 1; name=Disable,pid=9,resource=Stopper_2
+C 563 107.559 107.589 7 1; name=Disable,pid=9,resource=Stopper_1
+C 564 107.062 107.762 15 1; name=MoveAtBelt1,pid=9
+C 565 107.343 107.903 16 1; name=AlignBelt,pid=8
+C 566 105.203 107.909 3 0.25; name=Transport,pid=7,type=product,traj=tr_sw3_b5,frag=1
+C 567 107.762 107.962 15 1; name=Ungrab,pid=9
+C 568 107.903 108.463 16 1; name=AlignPandP,pid=8
+C 569 108.463 108.493 17 1; name=Disable,pid=8,resource=Stopper_3
+C 570 107.962 108.662 15 1; name=MoveBeforeBelt1,pid=10
+C 571 107.589 109.335 9 0.25; name=Transport,pid=9,type=top,traj=tr_s2_w4,frag=1
+E 80 109.335; name=sensor_04,event=await,type=top
+C 572 109.335 109.369 9 0.25; name=Transport,pid=9,type=top,traj=tr_w4_s3,frag=1
+C 573 107.909 109.949 4 0.25; name=Transport,pid=7,type=product,traj=tr_b5_p20,frag=1
+E 81 109.949; name=sensor_20,event=pass,type=product
+C 574 108.662 109.958 15 1; name=MoveAboveTop,pid=10
+C 575 109.369 110.035 9 0.25; name=Transport,pid=9,type=top,traj=tr_s3_p5,frag=1
+E 82 110.035; name=sensor_05,event=pass,type=top
+C 576 110.035 110.065 2 1; name=Enable,pid=9,resource=Stopper_4
+C 577 109.949 110.149 6 1; name=Grab,pid=7
+C 578 107.962 110.228 0 0.25; name=Transport,pid=9,type=bottom,traj=tr_ungrab_s5,frag=1
+C 579 110.228 110.282 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s5_w1,frag=1
+E 83 110.282; name=sensor_01,event=await,type=bottom
+C 580 110.282 110.482 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w1_s1,frag=1
+C 581 110.482 110.715 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s1_w2,frag=1
+E 84 110.715; name=sensor_02,event=await,type=bottom
+C 582 110.715 110.768 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w2_s2,frag=1
+C 583 109.958 110.858 15 1; name=MoveAtTop,pid=10
+C 584 110.858 111.058 15 1; name=Grab,pid=10
+C 585 110.149 111.243 6 1; name=MoveBeforeBelt5,pid=7
+C 586 110.035 111.369 9 0.25; name=Transport,pid=9,type=top,traj=tr_p5_b3,frag=1
+C 587 111.058 111.958 15 1; name=MoveAboveTop,pid=10
+C 588 110.768 112.515 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s2_w4,frag=1
+E 85 112.515; name=sensor_04,event=await,type=bottom
+C 589 112.515 112.548 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_w4_s3,frag=1
+C 590 111.958 112.608 6 1; name=MoveAboveProduct,pid=7
+C 591 111.369 112.682 5 0.25; name=Transport,pid=9,type=top,traj=tr_b3_s4,frag=1
+E 86 112.682; name=sensor_08,event=await,type=top
+C 592 112.548 113.215 9 0.25; name=Transport,pid=9,type=bottom,traj=tr_s3_p5,frag=1
+E 87 113.215; name=sensor_05,event=pass,type=bottom
+C 593 113.215 113.245 17 1; name=Enable,pid=9,resource=Stopper_3
+C 594 111.958 113.255 15 1; name=MoveBeforeBelt1,pid=10
+C 595 112.608 113.508 6 1; name=MoveAtProduct,pid=7
+C 596 113.508 113.708 6 1; name=Ungrab,pid=7
+C 597 113.255 113.955 15 1; name=MoveAtBelt1,pid=10
+C 598 113.955 114.155 15 1; name=Ungrab,pid=10
+C 599 113.708 114.608 6 1; name=MoveAboveProduct,pid=7
+C 600 114.155 114.855 15 1; name=MoveBeforeBelt1,pid=10
+C 601 114.608 115.258 6 1; name=MoveBeforeBelt5,pid=7
+C 602 108.463 115.38 11 1; name=Assemble,pid=8
+C 603 115.38 115.94 16 1; name=AlignBelt,pid=8
+C 604 114.855 116.151 15 1; name=MoveAboveBottom,pid=10
+C 605 115.258 116.352 6 1; name=MoveAtBelt5,pid=7
+C 606 114.155 116.421 0 0.25; name=Transport,pid=10,type=top,traj=tr_ungrab_s5,frag=1
+C 607 116.421 116.475 9 0.25; name=Transport,pid=10,type=top,traj=tr_s5_w1,frag=1
+E 88 116.475; name=sensor_01,event=await,type=top
+C 608 115.94 116.5 16 1; name=AlignPandP,pid=8
+C 609 116.475 116.675 9 0.25; name=Transport,pid=10,type=top,traj=tr_w1_s1,frag=1
+C 610 116.675 116.908 9 0.25; name=Transport,pid=10,type=top,traj=tr_s1_w2,frag=1
+E 89 116.908; name=sensor_02,event=await,type=top
+C 611 116.908 116.938 13 1; name=Enable,pid=10,resource=Stopper_2
+C 612 116.908 116.938 7 1; name=Enable,pid=10,resource=Stopper_1
+C 613 116.908 116.961 9 0.25; name=Transport,pid=10,type=top,traj=tr_w2_s2,frag=1
+C 614 116.151 117.051 15 1; name=MoveAtBottom,pid=10
+C 615 116.5 117.06 16 1; name=AlignBelt,pid=8
+C 616 117.051 117.251 15 1; name=Grab,pid=10
+C 617 117.06 117.34 10 1; name=Enable,pid=8
+C 618 116.908 117.408 12 1; name=Down,pid=10
+C 619 117.34 117.43 10 1; name=Disable,pid=8
+C 620 117.408 117.458 12 1; name=Grab,pid=10
+C 621 117.458 117.958 12 1; name=Up,pid=10
+C 622 117.251 118.151 15 1; name=MoveAboveBottom,pid=10
+C 623 117.43 118.22 8 1; name=Enable,pid=9
+C 624 117.958 118.308 12 1; name=Flip_left,pid=10
+C 625 118.308 118.808 12 1; name=Down,pid=10
+C 626 118.808 118.848 12 1; name=Ungrab,pid=10
+C 627 118.22 119.01 8 1; name=Disable,pid=9
+C 628 118.848 119.348 12 1; name=Up,pid=10
+C 629 118.151 119.447 15 1; name=MoveBeforeBelt1,pid=10
+C 630 119.01 119.57 16 1; name=AlignPandP,pid=9
+C 631 119.348 119.698 12 1; name=Flip_right,pid=10
+C 632 119.698 119.728 7 1; name=Disable,pid=10,resource=Stopper_1
+C 633 119.698 119.728 13 1; name=Disable,pid=10,resource=Stopper_2
+C 634 119.57 120.13 16 1; name=AlignBelt,pid=9
+C 635 117.43 120.136 3 0.25; name=Transport,pid=8,type=product,traj=tr_sw3_b5,frag=1
+C 636 119.447 120.147 15 1; name=MoveAtBelt1,pid=10
+C 637 120.147 120.347 15 1; name=Ungrab,pid=10
+C 638 120.13 120.69 16 1; name=AlignPandP,pid=9
+C 639 120.69 120.72 17 1; name=Disable,pid=9,resource=Stopper_3
+C 640 119.728 121.475 9 0.25; name=Transport,pid=10,type=top,traj=tr_s2_w4,frag=1
+E 90 121.475; name=sensor_04,event=await,type=top
+C 641 121.475 121.508 9 0.25; name=Transport,pid=10,type=top,traj=tr_w4_s3,frag=1
+C 642 121.508 122.175 9 0.25; name=Transport,pid=10,type=top,traj=tr_s3_p5,frag=1
+E 91 122.175; name=sensor_05,event=pass,type=top
+C 643 120.136 122.176 4 0.25; name=Transport,pid=8,type=product,traj=tr_b5_p20,frag=1
+E 92 122.176; name=sensor_20,event=pass,type=product
+C 644 122.175 122.205 2 1; name=Enable,pid=10,resource=Stopper_4
+C 645 122.176 122.376 6 1; name=Grab,pid=8
+C 646 120.347 122.614 0 0.25; name=Transport,pid=10,type=bottom,traj=tr_ungrab_s5,frag=1
+C 647 122.614 122.667 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_s5_w1,frag=1
+E 93 122.667; name=sensor_01,event=await,type=bottom
+C 648 122.667 122.867 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_w1_s1,frag=1
+C 649 122.867 123.101 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_s1_w2,frag=1
+E 94 123.101; name=sensor_02,event=await,type=bottom
+C 650 123.101 123.154 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_w2_s2,frag=1
+C 651 122.376 123.47 6 1; name=MoveBeforeBelt5,pid=8
+C 652 122.175 123.508 9 0.25; name=Transport,pid=10,type=top,traj=tr_p5_b3,frag=1
+C 653 123.47 123.942 6 1; name=MoveAboveProduct,pid=8
+C 654 123.508 124.821 5 0.25; name=Transport,pid=10,type=top,traj=tr_b3_s4,frag=1
+E 95 124.821; name=sensor_08,event=await,type=top
+C 655 123.942 124.842 6 1; name=MoveAtProduct,pid=8
+C 656 123.154 124.901 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_s2_w4,frag=1
+E 96 124.901; name=sensor_04,event=await,type=bottom
+C 657 124.901 124.934 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_w4_s3,frag=1
+C 658 124.842 125.042 6 1; name=Ungrab,pid=8
+C 659 124.934 125.601 9 0.25; name=Transport,pid=10,type=bottom,traj=tr_s3_p5,frag=1
+E 97 125.601; name=sensor_05,event=pass,type=bottom
+C 660 125.601 125.631 17 1; name=Enable,pid=10,resource=Stopper_3
+C 661 125.042 125.942 6 1; name=MoveAboveProduct,pid=8
+C 662 125.942 126.413 6 1; name=MoveBeforeBelt5,pid=8
+C 663 126.413 127.507 6 1; name=MoveAtBelt5,pid=8
+C 664 120.69 127.607 11 1; name=Assemble,pid=9
+C 665 127.607 128.167 16 1; name=AlignBelt,pid=9
+C 666 128.167 128.727 16 1; name=AlignPandP,pid=9
+C 667 128.727 129.287 16 1; name=AlignBelt,pid=9
+C 668 129.287 129.567 10 1; name=Enable,pid=9
+C 669 129.567 129.657 10 1; name=Disable,pid=9
+C 670 129.657 130.447 8 1; name=Enable,pid=10
+C 671 130.447 131.237 8 1; name=Disable,pid=10
+C 672 131.237 131.797 16 1; name=AlignPandP,pid=10
+C 673 131.797 132.357 16 1; name=AlignBelt,pid=10
+C 674 129.657 132.363 3 0.25; name=Transport,pid=9,type=product,traj=tr_sw3_b5,frag=1
+C 675 132.357 132.917 16 1; name=AlignPandP,pid=10
+C 676 132.917 132.947 17 1; name=Disable,pid=10,resource=Stopper_3
+C 677 132.363 134.403 4 0.25; name=Transport,pid=9,type=product,traj=tr_b5_p20,frag=1
+E 98 134.403; name=sensor_20,event=pass,type=product
+C 678 134.403 134.603 6 1; name=Grab,pid=9
+C 679 134.603 135.697 6 1; name=MoveBeforeBelt5,pid=9
+C 680 135.697 136.01 6 1; name=MoveAboveProduct,pid=9
+C 681 136.01 136.91 6 1; name=MoveAtProduct,pid=9
+C 682 136.91 137.11 6 1; name=Ungrab,pid=9
+C 683 137.11 138.01 6 1; name=MoveAboveProduct,pid=9
+C 684 138.01 138.322 6 1; name=MoveBeforeBelt5,pid=9
+C 685 138.322 139.416 6 1; name=MoveAtBelt5,pid=9
+C 686 132.917 139.834 11 1; name=Assemble,pid=10
+C 687 139.834 140.394 16 1; name=AlignBelt,pid=10
+C 688 140.394 140.954 16 1; name=AlignPandP,pid=10
+C 689 140.954 141.514 16 1; name=AlignBelt,pid=10
+C 690 141.514 141.794 10 1; name=Enable,pid=10
+C 691 141.794 141.884 10 1; name=Disable,pid=10
+C 692 141.884 144.59 3 0.25; name=Transport,pid=10,type=product,traj=tr_sw3_b5,frag=1
+C 693 144.59 146.63 4 0.25; name=Transport,pid=10,type=product,traj=tr_b5_p20,frag=1
+E 99 146.63; name=sensor_20,event=pass,type=product
+C 694 146.63 146.83 6 1; name=Grab,pid=10
+C 695 146.83 147.924 6 1; name=MoveBeforeBelt5,pid=10
+C 696 147.924 148.237 6 1; name=MoveAboveProduct,pid=10
+C 697 148.237 149.137 6 1; name=MoveAtProduct,pid=10
+C 698 149.137 149.337 6 1; name=Ungrab,pid=10
+C 699 149.337 150.237 6 1; name=MoveAboveProduct,pid=10
+C 700 150.237 150.549 6 1; name=MoveBeforeBelt5,pid=10
+C 701 150.549 151.643 6 1; name=MoveAtBelt5,pid=10
+F 0 0 151.643 150 0 0
+F 4 0 151.643 150 0 0
+F 2 0 151.643 150 0 0
+F 1 0 151.643 150 0 0
+F 3 0 151.643 150 0 0
+F 0 151.643 152.643 0 0 0
+F 4 151.643 152.643 0 0 0
+F 1 151.643 152.643 0 0 0
+F 2 151.643 152.643 0 0 0
+F 3 151.643 152.643 0 0 0
+F 0 152.643 152.643 0 0 0
+F 0 152.643 152.643 -1 0.0 0.0
+F 4 152.643 152.643 0 0 0
+F 4 152.643 152.643 -1 0.0 0.0
+F 3 152.643 152.643 0 0 0
+F 3 152.643 152.643 -1 0.0 0.0
+F 1 152.643 152.643 0 0 0
+F 1 152.643 152.643 -1 0.0 0.0
+F 2 152.643 152.643 0 0 0
+F 2 152.643 152.643 -1 0.0 0.0

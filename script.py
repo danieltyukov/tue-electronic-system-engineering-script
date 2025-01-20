@@ -20,7 +20,7 @@ def parse_makespan(output):
     return None
 
 
-def update_poosl_model(belt, index, gantry, model_path):
+def update_poosl_model(belt, index, gantry1, gantry2, model_path):
     with open(model_path, 'r') as file:
         data = file.readlines()
 
@@ -30,9 +30,9 @@ def update_poosl_model(belt, index, gantry, model_path):
         if "addSlowIndex" in line or "addNormalIndex" in line or "addFastIndex" in line:
             data[i] = f"        add{index.capitalize()}Index\n"
         if "addSlowArm1" in line or "addNormalArm1" in line or "addFastArm1" in line:
-            data[i] = f"        add{gantry.capitalize()}Arm1\n"
+            data[i] = f"        add{gantry1.capitalize()}Arm1\n"
         if "addSlowArm2" in line or "addNormalArm2" in line or "addFastArm2" in line:
-            data[i] = f"        add{gantry.capitalize()}Arm2\n"
+            data[i] = f"        add{gantry2.capitalize()}Arm2\n"
 
     with open(model_path, 'w') as file:
         file.writelines(data)
@@ -50,11 +50,11 @@ def run_performance_model(trace_ini, model):
         return None
 
 
-def calculate_profit(makespan, belt, index, gantry, adjustments):
+def calculate_profit(makespan, belt, index, gantry1, gantry2, adjustments):
     make0, window, price0 = 242, 913, 6032.4
-    default_belt, default_index, default_gantry = 's', 'f', 'n'
+    default_belt, default_index, default_gantry1, default_gantry2 = 's', 'f', 'n', 'n'
 
-    if (belt != default_belt, index != default_index, gantry != default_gantry):
+    if (belt != default_belt, index != default_index, gantry1 != default_gantry1, gantry2 != default_gantry2):
         changes = 1
     else:
         changes = 0
@@ -65,10 +65,11 @@ def calculate_profit(makespan, belt, index, gantry, adjustments):
     cost_map = {
         'belt': {'s': 510, 'n': 1029, 'f': 1744},
         'index': {'s': 133, 'n': 634, 'f': 919},
-        'gantry': {'s': 798, 'n': 1299, 'f': 1529}
+        'gantry1': {'s': 798, 'n': 1299, 'f': 1529},
+        'gantry2': {'s': 798, 'n': 1299, 'f': 1529}
     }
 
-    bom_cost = (cost_map['belt'][belt] + cost_map['index'][index] + 2 * cost_map['gantry'][gantry])
+    bom_cost = (cost_map['belt'][belt] + cost_map['index'][index] + cost_map['gantry1'][gantry1] + cost_map['gantry2'][gantry2])
     price = 1.2 * (bom_cost + 1000)
     volume = max(0, 1500 + 2 * (price0 - price) + 50 * (make0 - makespan))
 
@@ -83,52 +84,106 @@ def calculate_profit(makespan, belt, index, gantry, adjustments):
 
 if __name__ == "__main__":
     configurations = [
-        ("slow", "slow", "slow"),
-        ("slow", "slow", "normal"),
-        ("slow", "slow", "fast"),
-        ("slow", "normal", "slow"),
-        ("slow", "normal", "normal"),
-        ("slow", "normal", "fast"),
-        ("slow", "fast", "slow"),
-        ("slow", "fast", "normal"),
-        ("slow", "fast", "fast"),
-        ("normal", "slow", "slow"),
-        ("normal", "slow", "normal"),
-        ("normal", "slow", "fast"),
-        ("normal", "normal", "slow"),
-        ("normal", "normal", "normal"),
-        ("normal", "normal", "fast"),
-        ("normal", "fast", "slow"),
-        ("normal", "fast", "normal"),
-        ("normal", "fast", "fast"),
-        ("fast", "slow", "slow"),
-        ("fast", "slow", "normal"),
-        ("fast", "slow", "fast"),
-        ("fast", "normal", "slow"),
-        ("fast", "normal", "normal"),
-        ("fast", "normal", "fast"),
-        ("fast", "fast", "slow"),
-        ("fast", "fast", "normal"),
-        ("fast", "fast", "fast")
+        ("slow", "slow", "slow", "slow"),
+        ("slow", "slow", "slow", "normal"),
+        ("slow", "slow", "slow", "fast"),
+        ("slow", "slow", "normal", "slow"),
+        ("slow", "slow", "normal", "normal"),
+        ("slow", "slow", "normal", "fast"),
+        ("slow", "slow", "fast", "slow"),
+        ("slow", "slow", "fast", "normal"),
+        ("slow", "slow", "fast", "fast"),
+        ("slow", "normal", "slow", "slow"),
+        ("slow", "normal", "slow", "normal"),
+        ("slow", "normal", "slow", "fast"),
+        ("slow", "normal", "normal", "slow"),
+        ("slow", "normal", "normal", "normal"),
+        ("slow", "normal", "normal", "fast"),
+        ("slow", "normal", "fast", "slow"),
+        ("slow", "normal", "fast", "normal"),
+        ("slow", "normal", "fast", "fast"),
+        ("slow", "fast", "slow", "slow"),
+        ("slow", "fast", "slow", "normal"),
+        ("slow", "fast", "slow", "fast"),
+        ("slow", "fast", "normal", "slow"),
+        ("slow", "fast", "normal", "normal"),
+        ("slow", "fast", "normal", "fast"),
+        ("slow", "fast", "fast", "slow"),
+        ("slow", "fast", "fast", "normal"),
+        ("slow", "fast", "fast", "fast"),
+        ("normal", "slow", "slow", "slow"),
+        ("normal", "slow", "slow", "normal"),
+        ("normal", "slow", "slow", "fast"),
+        ("normal", "slow", "normal", "slow"),
+        ("normal", "slow", "normal", "normal"),
+        ("normal", "slow", "normal", "fast"),
+        ("normal", "slow", "fast", "slow"),
+        ("normal", "slow", "fast", "normal"),
+        ("normal", "slow", "fast", "fast"),
+        ("normal", "normal", "slow", "slow"),
+        ("normal", "normal", "slow", "normal"),
+        ("normal", "normal", "slow", "fast"),
+        ("normal", "normal", "normal", "slow"),
+        ("normal", "normal", "normal", "normal"),
+        ("normal", "normal", "normal", "fast"),
+        ("normal", "normal", "fast", "slow"),
+        ("normal", "normal", "fast", "normal"),
+        ("normal", "normal", "fast", "fast"),
+        ("normal", "fast", "slow", "slow"),
+        ("normal", "fast", "slow", "normal"),
+        ("normal", "fast", "slow", "fast"),
+        ("normal", "fast", "normal", "slow"),
+        ("normal", "fast", "normal", "normal"),
+        ("normal", "fast", "normal", "fast"),
+        ("normal", "fast", "fast", "slow"),
+        ("normal", "fast", "fast", "normal"),
+        ("normal", "fast", "fast", "fast"),
+        ("fast", "slow", "slow", "slow"),
+        ("fast", "slow", "slow", "normal"),
+        ("fast", "slow", "slow", "fast"),
+        ("fast", "slow", "normal", "slow"),
+        ("fast", "slow", "normal", "normal"),
+        ("fast", "slow", "normal", "fast"),
+        ("fast", "slow", "fast", "slow"),
+        ("fast", "slow", "fast", "normal"),
+        ("fast", "slow", "fast", "fast"),
+        ("fast", "normal", "slow", "slow"),
+        ("fast", "normal", "slow", "normal"),
+        ("fast", "normal", "slow", "fast"),
+        ("fast", "normal", "normal", "slow"),
+        ("fast", "normal", "normal", "normal"),
+        ("fast", "normal", "normal", "fast"),
+        ("fast", "normal", "fast", "slow"),
+        ("fast", "normal", "fast", "normal"),
+        ("fast", "normal", "fast", "fast"),
+        ("fast", "fast", "slow", "slow"),
+        ("fast", "fast", "slow", "normal"),
+        ("fast", "fast", "slow", "fast"),
+        ("fast", "fast", "normal", "slow"),
+        ("fast", "fast", "normal", "normal"),
+        ("fast", "fast", "normal", "fast"),
+        ("fast", "fast", "fast", "slow"),
+        ("fast", "fast", "fast", "normal"),
+        ("fast", "fast", "fast", "fast")
     ]
 
     results = []
 
-    for belt, index, gantry in configurations:
-        update_poosl_model(belt, index, gantry, model_file)
+    for belt, index, gantry1, gantry2 in configurations:
+        update_poosl_model(belt, index, gantry1, gantry2, model_file)
         makespan = run_performance_model(trace_ini_path, model_file)
 
         if makespan:
-            profit = calculate_profit(makespan, belt[0], index[0], gantry[0], adjustments=1)
-            results.append((belt, index, gantry, makespan, profit))
-            print(f"Configuration: Belt={belt}, Index={index}, Gantry={gantry} | Makespan: {makespan:.2f}, Profit: {profit:.2f}")
+            profit = calculate_profit(makespan, belt[0], index[0], gantry1[0], gantry2[0], adjustments=1)
+            results.append((belt, index, gantry1, gantry2, makespan, profit))
+            print(f"Configuration: Belt={belt}, Index={index}, Gantry1={gantry1}, Gantry2={gantry2} | Makespan: {makespan:.2f}, Profit: {profit:.2f}")
 
-    df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed", "Makespan", "Profit"])
-    df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry={row['GantrySpeed']}", axis=1)
+    df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed1", "GantrySpeed2", "Makespan", "Profit"])
+    df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry1={row['GantrySpeed1']}, Gantry2={row['GantrySpeed2']}", axis=1)
     df.to_csv("design_space_results.csv", index=False)
 
     fig = px.scatter(
-        df, x="Makespan", y="Profit", color="Configuration", size=[10] * len(df), title="Makespan vs Profit",
+        df, x="Makespan", y="Profit", color="Configuration", title="Makespan vs Profit",
         labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
     )
     fig.show()
