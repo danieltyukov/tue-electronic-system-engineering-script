@@ -76,7 +76,7 @@ def calculate_profit(makespan, belt, index, gantry1, gantry2, adjustments):
     if volume > 0:
         volume *= 1 - ((3 * window - delay) * delay / (2 * window ** 2))
 
-    cost = bom_cost * volume + 72000 * adjustments + 108000 * changes
+    cost = bom_cost * volume + 72000 * adjustments + 108000 * changes + 1000*volume
     profit = price * volume - cost
 
     return profit
@@ -169,6 +169,8 @@ if __name__ == "__main__":
 
     results = []
 
+    i = 0
+
     for belt, index, gantry1, gantry2 in configurations:
         update_poosl_model(belt, index, gantry1, gantry2, model_file)
         makespan = run_performance_model(trace_ini_path, model_file)
@@ -176,7 +178,11 @@ if __name__ == "__main__":
         if makespan:
             profit = calculate_profit(makespan, belt[0], index[0], gantry1[0], gantry2[0], adjustments=1)
             results.append((belt, index, gantry1, gantry2, makespan, profit))
+            i += 1
+            print({i})
             print(f"Configuration: Belt={belt}, Index={index}, Gantry1={gantry1}, Gantry2={gantry2} | Makespan: {makespan:.2f}, Profit: {profit:.2f}")
+    
+    print(f"Total configurations: {i}")
 
     df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed1", "GantrySpeed2", "Makespan", "Profit"])
     df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry1={row['GantrySpeed1']}, Gantry2={row['GantrySpeed2']}", axis=1)
