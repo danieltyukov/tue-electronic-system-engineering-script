@@ -28,7 +28,7 @@ int main(int argc, char **argv){
 	char larm =  argv[4][0];
 	char rarm =  argv[5][0];
 	int a = argv[6][0];
-
+	a = (a>0);
 	//Check for number of changes
 	int g = 0;
 	if(belt0 != belt) g = g+1;
