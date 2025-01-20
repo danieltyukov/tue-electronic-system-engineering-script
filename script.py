@@ -59,7 +59,6 @@ def calculate_profit(makespan, belt, index, gantry1, gantry2, adjustments):
     else:
         changes = 0
 
-    # changes = sum([belt != default_belt, index != default_index, gantry != default_gantry])
     delay = adjustments * 28 + changes * 56
 
     cost_map = {
