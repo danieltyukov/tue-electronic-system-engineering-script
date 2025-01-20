@@ -35,7 +35,7 @@ int main(int argc, char **argv){
 	if(table0 != table) g = g+1;;
 	if(larm0 != larm) g = g+1;
 	if(rarm0 != rarm) g = g+1;
-	g = g*(g>0);
+	g = (g>0);
 	
 	//compute delay
 	double delay = a*28 + g*56;
