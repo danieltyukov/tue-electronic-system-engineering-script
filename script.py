@@ -168,8 +168,6 @@ if __name__ == "__main__":
 
     results = []
 
-    i = 0
-
     for belt, index, gantry1, gantry2 in configurations:
         update_poosl_model(belt, index, gantry1, gantry2, model_file)
         makespan = run_performance_model(trace_ini_path, model_file)
@@ -177,18 +175,14 @@ if __name__ == "__main__":
         if makespan:
             profit = calculate_profit(makespan, belt[0], index[0], gantry1[0], gantry2[0], adjustments=1)
             results.append((belt, index, gantry1, gantry2, makespan, profit))
-            i += 1
-            print({i})
             print(f"Configuration: Belt={belt}, Index={index}, Gantry1={gantry1}, Gantry2={gantry2} | Makespan: {makespan:.2f}, Profit: {profit:.2f}")
-    
-    print(f"Total configurations: {i}")
 
     df = pd.DataFrame(results, columns=["BeltSpeed", "IndexSpeed", "GantrySpeed1", "GantrySpeed2", "Makespan", "Profit"])
     df["Configuration"] = df.apply(lambda row: f"Belt={row['BeltSpeed']}, Index={row['IndexSpeed']}, Gantry1={row['GantrySpeed1']}, Gantry2={row['GantrySpeed2']}", axis=1)
     df.to_csv("design_space_results.csv", index=False)
 
     fig = px.scatter(
-        df, x="Makespan", y="Profit", color="Configuration", title="Makespan vs Profit",
+        df, x="Makespan", y="Profit", color="Configuration", size=[10] * len(df), title="Makespan vs Profit",
         labels={"Makespan": "Makespan (s)", "Profit": "Profit ($)"}
     )
     fig.show()
